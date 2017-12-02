@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08封装一个显示隐藏页面元素的函数</title>
+	
+</head>
+<body>
+	<div id="girl">
+		<img src="img/g3.jpg">
+	</div>
+	<button id="btn">显示/隐藏</button>
+	<script>
+		var girl = document.getElementById('girl');
+		var btn = document.getElementById('btn');
+
+		// 显示状态：默认显示true
+		var show = true;
+		
+		// 显示隐藏
+		btn.onclick = function(){
+			if(show){
+				girl.style.display = 'none';
+				// show = false;
+			}else{
+				girl.style.display = 'block';
+				// show = true;
+			}
+
+			// 简化状态改变
+			show = !show;
+		}
+	</script>
+</body>
+</html>

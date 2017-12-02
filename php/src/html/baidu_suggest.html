@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度搜索建议</title>
+	<script>
+	document.addEventListener("DOMContentLoaded",function(){
+		/*
+			jsonp实现搜索建议：
+			https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?json=1&cb=getData&wd=html5
+
+			jsonp步骤
+			* 预设全局函数
+			* 生成script标签并写入页面
+				* 接口写入src属性，附带全局函数名
+			* 处理数据
+				* 删除script标签
+		 */
+		 // var xhr = new XMLHttpRequest();
+		 // xhr.open('get','https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?json=1&cb=getData&wd=html5',true);
+		 // xhr.send();
+
+		 // 获取页面元素
+		 var keyword = document.querySelector('#keyword');
+		 var suggest = document.querySelector('#suggest');
+
+
+		 // 预设全局变量
+		 window.getData = function(data){
+		 	console.log(data.s);
+
+		 	// 处理数据
+		 	suggest.innerHTML = data.s.map(item=>{
+		 		return `<li>${item}</li>`;
+		 	}).join('');
+
+		 	// 请求结束后删除script
+		 	script.parentNode.removeChild(script);
+		 }
+
+
+		
+
+		// 输入显示搜索建议
+		var timer;
+		var script;
+		keyword.oninput = function(){
+			var _keyword = keyword.value;
+
+			clearTimeout(timer);
+
+			// 如何解决请求过多的问题
+			timer = setTimeout(()=>{
+
+				// 创建script并写入页面
+				script = document.createElement('script');
+				script.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?json=1&cb=getData&wd=' + _keyword;
+				document.body.appendChild(script);
+			},500);
+
+
+		}
+	});
+
+
+
+	</script>
+	<!-- <script src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?json=1&cb=getData&wd=html5"></script> -->
+</head>
+<body>
+	<input type="text" id="keyword" name="keyword" list="suggest"><button>laoxie搜索</button>
+	<ul id="suggest"></ul>
+</body>
+</html>

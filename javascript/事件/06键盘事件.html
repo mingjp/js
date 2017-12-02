@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06键盘事件</title>
+	<style>
+		
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				* onkeydown 某个键盘按键被按下。
+				* onkeyup 某个键盘按键被松开。
+				* onkeypress 键盘<字符键>被按下,而且如果按住不放的话，会重复触发此事件
+			 */
+			var box = document.getElementsByClassName('box')[0];
+			var username = document.getElementById('username');
+
+			username.onkeydown = function(e){
+				e = e || window.event;
+
+				console.log(e);
+
+				console.log('keydown');
+			}
+
+			username.onkeyup = function(){
+				console.log('keyup')
+			}
+
+			username.onkeypress = function(){
+				console.log('keypress')
+			}
+
+
+		}
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+	<input type="text" id="username">
+</body>
+</html>

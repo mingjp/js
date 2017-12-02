@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04自定义构造函数</title>
+	<script>
+		/*
+			* 自定义构造函数
+				* 与普通函数的区别
+					* 执行方式
+				* this：指向实例
+			* 实例：用new生成的对象称为“实例”
+			* 原型对象
+		 */
+		
+		// 工厂函数
+		function student(name,age,gender){
+			var res = {}
+			res.name = name;
+			res.age = age;
+			res.gender = gender;
+
+			return res;
+		}
+
+		var s1 = student('王铁锤',48,'男');
+		// var s11 = new student();//属性值为undefined对象
+
+
+		// 自定义构造函数：Student
+		function Student(name,age,gender){
+			// var res = {}
+			// 把this指向res（res就是this）
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+			// return res
+
+			// this指向s2
+		}
+
+		// 实例:s2
+		var s2 = new Student('王铁柱',48,'男');
+		// var s22 = Student();//undefined
+		// console.log("s11:",s11);
+		// console.log('s22',s22);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

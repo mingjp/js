@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品列表</title>
+	<script src="../js/common.js"></script>
+	<script>
+	document.addEventListener('DOMContentLoaded',function(){
+		/*var goodslist = document.querySelector('.goodslist');
+
+		// ajax获取商品信息
+		var xhr = new XMLHttpRequest();
+
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === 4){
+				var datalist = JSON.parse(xhr.responseText);
+
+				var ul = document.createElement('ul');
+				ul.innerHTML = datalist.map(item=>{
+					return `
+							<li data-id="${item.id}">
+								<img src="${item.imgurl}">
+								<h4>${item.title}</h4>
+								<p class="price">${item.price}</p>
+							</li>
+					`
+				}).join('');
+
+				goodslist.appendChild(ul);
+			}
+		}
+
+		xhr.open('get','../api/data/goodslist.json',true);
+
+		xhr.send();*/
+
+		ajax({
+			url:"../api/football.php",
+			success:function(){
+				console.log()
+			}
+		})
+	})
+
+	</script>
+</head>
+<body>
+	<h1>商品列表</h1>
+	<div class="goodslist">
+		
+	</div>
+</body>
+</html>

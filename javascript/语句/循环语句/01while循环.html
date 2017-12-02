@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01while循环</title>
+	<script>
+		/*
+			* while循环
+				格式：
+				while(条件){
+					条件成立执行这里的代码
+				}
+
+				* 条件不成就会结束循环
+			* 避免死循环
+				* 变量更新：让条件在某个时刻不成立
+		 */
+		var num = 10;
+
+		/*// 死循环
+		while(num>5){
+			console.log(666);
+		}
+
+		// 代码不会结束
+		console.log('结束');*/
+
+		while(num>5){
+			console.log(666);
+
+			// 变量更新
+			num--;
+		}
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

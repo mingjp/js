@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09刷新页面</title>
+	<script>
+		window.onload = function(){
+			/*
+				reload();
+			 */
+			var btnLogin = document.getElementById('btnLogin');
+			var output = document.getElementById('output');
+
+			btnLogin.onclick = function(){
+				// 刷新
+				location.reload();
+
+				// 跳转
+				// location.href = '';
+			}
+
+			output.innerHTML = Math.random();
+			// output.innerHTML = Date.now();
+		}
+	</script>
+</head>
+<body>
+	<button id="btnLogin">登录</button>
+	<div id="output"></div>
+</body>
+</html>

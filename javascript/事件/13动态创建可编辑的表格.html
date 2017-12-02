@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态创建可编辑的表格</title>
+	<style>
+		table{width:100%;margin-top:20px;border:1px solid #ddd;border-collapse:collapse;}
+		td,th{border:1px solid #ddd;padding:5px 10px;}
+		td{padding:0;height:30px;}
+		td input{width:100%;height:30px;border:none;background-color:#ffc;}
+	</style>
+	<script>
+		window.onload = function(){
+			var row = document.getElementById('row');
+			var col = document.getElementById('col');
+			var btn = col.nextElementSibling;
+			var datalist = document.getElementById('datalist');
+
+			// 给按钮绑定事件
+			btn.onclick = function(){
+				var _row = row.value;
+				var _col = col.value;
+
+				var table = document.createElement('table');
+
+				for(var i=0;i<_row;i++){
+					var tr = table.insertRow(i);
+
+					for(var j=0;j<_col;j++){
+						var td = tr.insertCell(j);
+						td.innerHTML = '单元格' + (i+1) + (j+1);
+					}
+
+					// 删除
+					tr.insertCell(j).innerHTML = '<button class="btnDel">&times;</button>';
+
+					// 添加行号
+					tr.insertCell(0).innerText = i+1;
+				}
+
+				// 把表格写入#datalist
+				datalist.innerHTML = '';
+				datalist.appendChild(table);
+			}
+
+
+			// 表格编辑
+			// 事件委托：把事件绑定给td的父级
+			datalist.onclick = function(e){
+				e = e || window.event;
+				var target = e.target || e.srcElement;
+
+				// 点击td编辑
+				if(target.tagName.toLowerCase() === 'td'){
+
+					if(target === target.parentNode.firstElementChild || target === target.parentNode.lastElementChild){
+						return;
+					}
+
+					// 生成一个输入框
+					var input = document.createElement('input');
+					input.type = 'text';
+					input.value = target.innerText;
+
+					// 把输入框写入td
+					target.innerHTML = '';
+					target.appendChild(input);
+					input.focus();
+
+					// 失去焦点是保存
+					input.onblur = function(){
+						target.innerHTML = this.value;
+					}
+				}
+
+				// 删除
+				else if(target.className === 'btnDel'){
+					var currentTr = target.parentNode.parentNode;
+					currentTr.parentNode.removeChild(currentTr);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<label for="row">行</label>
+	<input type="text" id="row">
+	<label for="col">行</label>
+	<input type="text" id="col">
+	<button>生成表格</button>
+	<div id="datalist"></div>
+</body>
+</html>

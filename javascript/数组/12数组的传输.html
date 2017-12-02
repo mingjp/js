@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12数组的传输</title>
+	<script>
+		// 基本数据类型的传参
+		var num = 100;
+		function show(n){
+			var n = num;
+			n++;
+			console.log('n:',n);//101
+		}
+
+		show(num);
+
+		console.log('num:',num);//100
+
+
+		// 引用数据类型的传参
+		var arr = [10,20];
+		function showArr(a){
+			// var a = arr;
+			a.push(30);
+			console.log(a);//[10,20,30]
+		}
+		showArr(arr);
+
+		console.log(arr);//[10,20,30];
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机点名程序（简单版）</title>
+	<script>
+	window.onload = function(){
+
+		var namelist = ['明经平','章松辉','唐湖金','张林冲','欧恒杰','叶嘉宇','冯志伟','戎玉丽','黄伟斌','肖振龙','潘英德','韦普旭','黄杏连','刘文祥','张升貌','黄子健','张小敏','廖明杰','李孟辉','李树生','陈国洲','卢思','谭宗俊','林捷佳','李炽杭','赵晶晶','吴炜耿','黄敏琼','李发强','张晨洋','梁政','刘景龙','张子聪','张育铭','苏秋冬','梁羽宇','陈青云','韦职丽','张柳柳','陈观斌','马涛','潘金平','徐翠','易上平','袁守明','付玲','王丽雅','邓厚锻','任思明','王亮','廖振兴','李进强','陈盛兴','童善根','郭明俐','黄世棠','彭昌振','刘盛伟','姚嘉梁','李志乾','柯礼钦','范方政','王乙钧'];
+
+		var currentName = document.getElementById('currentName');
+		var btn = document.getElementById('btn');
+
+		// 页面进入随机获取一个名字
+		getName();
+
+		// 给按钮绑定事件
+		btn.onclick = function(){
+			getName();
+		}
+
+		function getName(){
+			// 随机获取一个索引值
+			var idx = parseInt(Math.random()*namelist.length);
+
+			var name = namelist[idx];
+
+			currentName.value = name;
+		}
+	}
+
+
+	</script>
+</head>
+<body>
+	<input type="text" id="currentName">
+	<button id="btn">随机点名</button>
+</body>
+</html>

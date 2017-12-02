@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09盒模型属性</title>
+	<style>
+		.box{width:300px;height:200px;overflow: auto;}
+		.box .content{width:600px;height:800px;background-color: #efefef;}
+	</style>
+	<script>
+		/*
+			盒模型属性
+				*  offset
+					* offsetTop
+					* offsetLeft
+					* offsetWidth（border+padding+content）
+					* offsetHeight
+				* client
+					* clientWidth（padding+content）
+					* clientHeight
+				* scroll
+					* scrollTop 当前元素<垂直滚动条>滚动过的距离
+					* scrollLeft 当前元素<水平滚动条>滚动过的距离
+
+
+				获取页面滚动条信息
+					* window.scrollX,window.scrollY
+					* document.body.scrollTop,document.body.scrollLeft
+					* document.documentElement.scrollTop,document.documentElement.scrollLeft
+		 */
+		document.addEventListener("DOMContentLoaded",()=>{
+			let box = document.querySelector('.box');
+
+			window.box = box;
+		})
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="content"></div>
+	</div>
+</body>
+</html>

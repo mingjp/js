@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02event对象的获取</title>
+	<style>
+		.box{position:relative;background-color: #f00;width:140px;height:445px;overflow:hidden;}
+		.box img{display:none;position:absolute;top:0;left:-10px;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				event
+					* button
+						* 0 左键
+						* 1	滚轮
+						* 2 右键
+					
+			 */
+			var box = document.getElementsByClassName('box')[0];
+			var img = box.children[0];
+
+			// 监测用鼠标按键
+			box.onmousedown = function(event){
+				img.style.display = 'block';
+
+				// 左键
+				if(event.button === 0){
+					img.style.left = '-10px';
+
+				}
+
+				// 滚轮
+				else if(event.button === 1){
+					img.style.left = '-130px';
+				}
+
+				// 右键
+				else if(event.button === 2){
+					img.style.left = 'auto';
+					img.style.right = '0';
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="box">填写高考志愿<img src="img/timg.jpeg"></div>
+</body>
+</html>

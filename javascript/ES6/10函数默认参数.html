@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10函数默认参数</title>
+	<script>
+		// 函数默认参数
+		function sum(a=0,b=0){
+			return a + b;
+		}
+
+		sum(10,20);//30
+		sum();//NaN
+
+		// 剩余参数
+		// 格式：...agr
+		// 剩余参数agr为一个数组
+		function show(a,b,...c){
+			console.log(a,b,c)
+		}
+		show(10,20);
+		show(10,20,30);
+		show(10,20,30,40,50,60);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

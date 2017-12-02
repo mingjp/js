@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02查找元素在数组中的位置</title>
+	<script>
+		/*
+			查找keyword在数组中的索引值,查找不到返回-1
+			indexOf(keyword [,startIndex]):从头往后查找
+			lastIndexOf(keyword [,startIndex])：从后往前查找
+
+		 */
+		
+		var arr = ['html','css','javascript','ECMAScript','javascript','css3','html5'];
+
+		// 判断arr中是否有javascript
+		var res = arr.indexOf('javascript');//2
+		var res = arr.indexOf('javascript',3);//4
+		var res = arr.lastIndexOf('javascript');//4
+		var res = arr.indexOf('laoxie');//-1
+		console.log(res);
+
+		// 判断相关产中是否含有某个值
+		if(arr.indexOf('html') != -1){}
+		if(arr.indexOf('html') >=0){}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

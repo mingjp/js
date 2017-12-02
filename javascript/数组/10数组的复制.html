@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10数组的复制</title>
+	<script>
+		var num = 100;
+		var res = num;//res:100
+		res = 110;
+
+		// 那么num的值会不会变？
+		// num被复制
+		console.log(res,num);
+
+
+		var arr = [10,20,30];
+
+		// 复制了快捷方式
+		var arr_res = arr;
+		arr_res.push(40);
+		console.log('arr_res:',arr_res); 
+		console.log('arr:',arr);
+
+
+		// 实现数组的复制
+		var arr = [10,20,30];
+
+		// 复制方式1：
+		// * 先创建一个空数组
+		// * 遍历数组，逐个写入新数组
+		var newArr1 = [];
+		for(var i=0;i<arr.length;i++){
+			newArr1[i] = arr[i];
+		}
+
+		// 方式2：
+		// 利用数组方法slice()
+		var newArr2 = arr.slice(0);
+		newArr2.unshift(9);
+		console.log(arr,newArr2);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

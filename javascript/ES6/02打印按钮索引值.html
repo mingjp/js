@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02打印按钮索引值</title>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			var btns = document.querySelectorAll('button');
+
+			// 创建5个块级作用域
+			
+			for(let i=0;i<btns.length;i++){
+				// btns[i].idx = i;
+				btns[i].onclick = function(){
+					// this
+					// console.log(this.idx);
+					console.log(i);
+				}
+			}
+
+			/*
+			
+			{
+				// let i=0
+				btns[i].onclick = function(){
+					console.log(i);
+				}
+			}
+
+			{
+				// let i=1
+				btns[i].onclick = function(){
+					console.log(i);
+				}
+			}
+
+
+			{
+				// let i=2
+				btns[i].onclick = function(){
+					console.log(i);
+				}
+			}
+
+			*/
+		})
+	</script>
+</head>
+<body>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+</body>
+</html>

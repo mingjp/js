@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10嵌套循环</title>
+	<script>
+		/*
+			* break
+				* 退出当前整个循环
+				* break后的语句不会被执行
+			* continue
+				* 跳过本次循环，继续下一次循环
+				* continue后的语句不会被执行
+			* label标识
+				给循环取名字
+				格式：name:for(;;){}
+		 */
+		// for循环的执行过程
+		// 外层循环
+		for(var num=0;num<5;num++){
+			//执行for中的代码
+
+			// 内层循环
+			for(var qty=0;qty<5;qty++){
+				console.log(666);
+
+				if(qty==2){
+					break;
+				}
+			}
+
+			/*// 手动跳出循环
+			if(num==2){
+				break;
+			}*/
+		}
+
+
+		console.log(num);//5
+
+
+		console.log('-----------------华丽分割线--------------');
+		for(var i=0;i<5;i++){
+			if(i===2){
+				continue;
+			}
+			console.log(i);
+		}
+
+
+		console.log('-----------------超级华丽分割线--------------');
+		// 跳出外层循环
+		// index
+		wrap:for(var i=0;i<5;i++){
+
+			inner:for(var j=0;j<5;j++){
+				if(j==2){
+					break wrap;
+				}
+				console.log(i + '--' + j);
+			}
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

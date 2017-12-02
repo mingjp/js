@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03常用事件类型</title>
+	<style>
+		#box{width:200px;height:200px;background-color: #f00;}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<input type="text" id="username">
+	<script>
+	/*
+		常用事件类型
+			* onclick：单击
+			* ondblclick: 双击
+			* onmouseover: 鼠标移入
+
+		事件的发生都是一瞬间
+
+		在js中设置css属性：
+			* 元素.style
+	 */
+	
+	// 获取元素
+	var box = document.getElementById('box');
+	var username = document.getElementById('username');
+
+	// 绑定事件
+	// 鼠标移入
+	box.onmouseover = function(){
+		box.style.backgroundColor = '#58bc58';
+	}
+
+	// 鼠标移出
+	box.onmouseout = function(){
+		box.style.backgroundColor = '#f00';
+	}
+
+	// 表单内容改变并失去焦点时执行函数
+	username.onchange = function(){
+		console.log(666);
+	}
+
+	username.onkeyup = function(){
+		console.log('upupup');
+	}
+
+	</script>
+</body>
+</html>

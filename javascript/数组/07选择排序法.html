@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择排序法</title>
+	<style>
+		p{margin:5px 0;color:#999;}
+		.complete{margin-bottom:20px;color:#f60;}
+	</style>
+	<script>
+		/*
+			选择排序法
+			把当前数字分别跟后面的数字进行对比，把最小的放前面
+			[10,2,8,55,32,18,9,11,30,16,19,20]
+		 */
+		
+		var arr = [10,2,8,55,18,32,9];
+
+
+		// 外层循环
+		for(var i=0;i<arr.length;i++){
+
+			// 注意变量初始化的值
+			for(var j=i+1;j<arr.length;j++){
+				if(arr[i]>arr[j]){
+					var temp = arr[i];
+					arr[i] = arr[j];
+					arr[j] = temp;
+				}
+			}
+		}
+
+		console.log(arr);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

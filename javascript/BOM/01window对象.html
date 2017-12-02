@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01window对象</title>
+	<script>
+		/*
+			* window.onload的作用
+				* 延迟代码的执行
+				* 避免污染全局环境
+
+			* 删除对象的属性
+				delete 对象.属性
+			* 全局变量
+				* window下的属性
+			* 全局方法
+				window下的方法
+				* alert()
+				* parseInt()
+				* parseFloat()
+				* typeof()
+				* Number(),String(),Boolean(),Array(),Function(),Object()
+			* window在代码中可以省略
+		 */
+		window.onload = function(){
+			// 局部作用域
+			// 在局部作用域不用var声明变量，回称为全局变量（会称为window下的属性）
+			// myName = 'lemon';//不推荐
+
+			// alert()
+			// window.alert()
+		}
+
+		// 定义在全局环境下的变量都会成为window对象的属性
+		// var myName = 'lemon';
+
+		var obj = {name:'xxx',age:18};
+
+		// 添加属性
+		obj.gender = '女';
+
+		// 删除属性
+		delete obj.name;
+
+		console.log(obj);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

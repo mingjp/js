@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10元素属性的修改</title>
+	<script>
+		window.onload = function(){
+			var box = document.getElementById('box');
+			var username = document.getElementById('username');
+
+
+			// 标准属性的修改
+			// DOM节点与html结构存在一一对应的关系
+			box.className = 'abc';
+			box.innerHTML = '元素属性修改';
+			box.title = '你猜';
+
+			box.style.color = '#fc0';
+
+			// box.outerHTML = '<strong>oooo</strong>'
+
+
+			// 非标准属性
+			// 只会在DOM结构中设置
+			box.index = 100;
+
+			// 设置元素的html属性
+			// setAttribute()
+			// username.name = 'username';
+			username.setAttribute('name','username');
+			username.setAttribute('class','username');
+			username.setAttribute('data-idx','20');
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+	<input type="text" id="username">
+</body>
+</html>

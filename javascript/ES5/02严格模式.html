@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02严格模式</title>
+	<script>
+		'use strict';
+		/*
+			严格模式：
+				* 整个文件
+				* 一个函数
+				* 一个script标签
+		 */
+		
+		var total = 0;
+
+		function sum(){
+			// 不使用var声明变量严格模式中将不通过
+			a = 10;
+			b = 20;
+		}
+		// sum();
+
+
+		// delete不可删除属性的对象时报错
+		// delete window.total;
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

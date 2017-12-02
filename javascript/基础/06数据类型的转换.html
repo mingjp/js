@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06数据类型的转换</title>
+	<script>
+		/*
+			基本数据类型
+				* 数字：Number
+				* 字符串：String
+				* 布尔值：Boolean（true，false）
+
+			特殊数据类型
+				* NaN：Not a Number
+					* 数学运算无法得到数字时，就会返回NaN
+				* Null：null
+				* Undefined：undefined
+
+			* 数据类型判断
+				typeof
+		 */
+		
+		// 其他=>数字
+		// Number()
+		// 要求：
+		// 	* 必须是数字字符串
+
+		// 1. String=>Number
+		var str = '100';
+		var num = Number(str);
+
+		// alert(num);
+
+		// alert(typeof(num));
+
+		// 变量只声明不赋值
+		// 默认得到：undefined
+		var number;
+		// alert(number);
+
+		// 2. Boolean=>Number
+		var isNianQiang = true;
+		alert(Number(isNianQiang));
+
+
+		// 其他=>字符串
+		// String()
+		
+
+
+		// 其他=>布尔值
+		// Boolean()
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

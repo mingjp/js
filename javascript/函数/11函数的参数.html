@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11函数的参数</title>
+	<script>
+	/*
+		函数的参数
+
+			* 形参
+				* 函数声明时的参数
+				* 自动把形参声明为局部变量
+			* 实参
+				函数调用时的参数
+			* 多个参数以逗号隔开
+	 */
+		// 声明
+		function show(a){//a为形参
+			// 自动把形参声明为局部变量
+			// var a = 10;
+			// var a = 'html5';
+			// var a;
+			console.log(a);
+		}
+
+		// 调用
+		show(10);//10为实参
+		show('html5');
+		show();//undefined
+		show(10,20,'xxx',true);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

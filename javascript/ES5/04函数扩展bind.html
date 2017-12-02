@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04函数扩展bind</title>
+	<script>
+		/*
+			函数中的this代表当前对象，当前对象是谁取决于谁调用了这个函数
+			* bind(obj)改变this的指向,指向obj,返回一个函数
+		 */
+		var myname = 'h5_1705';
+		function showMsg(){
+			console.log(this.myname);
+		}
+
+		showMsg();//window=>h5_1705
+
+		var person = {
+			myname:"laoxie",
+			say:function(){
+				console.log(this.myname);
+			},
+			showMsg:showMsg.bind({title:'xxx',myname:'小乔流水人家'})
+		}
+
+		person.say();//person=> laoxie
+		person.showMsg();
+		//h5_1705, => 
+		//laoxie
+
+
+		document.addEventListener('DOMContentLoaded',function(){
+			// 点击按钮1s后打印按钮的文字
+			var output = document.querySelector('#output');
+			var btns = document.querySelectorAll('.btn');
+			for(var i=0;i<btns.length;i++){
+			    btns[i].onclick = function(){
+			    	// 这里的this是按钮
+			    	/*// ES5的解决方案：
+			    	setTimeout(function(){
+			    		// 这里的this是window
+			       		output.innerHTML = this.innerHTML;
+			    	}.bind(this),1000);*/
+
+			    	var self = this;
+
+			    	setTimeout(function(){
+			    		// 这里的this是window
+			       		output.innerHTML = self.innerHTML;
+			    	},1000);
+
+			    	// ES6的解决方案
+			    };
+			}
+			
+		})
+	</script>
+</head>
+<body>
+	<button class="btn">按钮1</button>
+	<button class="btn">按钮2</button>
+	<button class="btn">按钮3</button>
+	<button class="btn">按钮4</button>
+	<button class="btn">按钮5</button>
+	<div id="output"></div>
+</body>
+</html>

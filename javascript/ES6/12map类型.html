@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12map类型</title>
+	<script>
+	document.addEventListener('DOMContentLoaded',()=>{
+		/*
+			知识点：
+				* map类型
+					键值对
+					* set();
+					* get();
+		 */
+		// 创建一个变量，用于保存大量数据
+		// 对象：{}
+		// map：
+
+		var myData = new Map();
+
+		// 设置
+		myData.set("S0", "张三"); 
+		myData.set("S1", "李四"); 
+		myData.set("S2", "王五");
+
+		// 键：s0,s1,s2
+		// 值：张三,李四,王五
+		console.log(myData);
+
+
+		var box = document.querySelector('.box');
+		var attr = {my:true};
+
+		// 把dom节点做为myData的属性
+		myData.set(box,'页面元素');
+		myData.set(attr,'对象作为属性');
+
+		console.log(myData);
+
+		// 对象
+		var obj = {name:'xxx'}
+		obj[box] = '页面元素';
+		obj[attr] = '对象作为属性';
+
+		console.log(obj);
+
+
+		// 遍历map类型
+		// for..of
+		for(var [ke,val] of myData){
+			console.log(ke,val);
+		}
+
+		window.myData = myData;
+	})
+	
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

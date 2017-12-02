@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12tab标签页切换</title>
+	<style>
+		.tab{border:2px solid #ddd;padding:2px;}
+		.tab header{padding-bottom:2px;border-bottom:2px solid #ddd;overflow:hidden;}
+		.tab header div{float:left;padding:5px 15px;border-right:1px solid #ddd;}
+		.tab .active{background-color: #fc0;}
+		.tab .content{padding:15px;min-height: 100px;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				1）初始化
+					* 高亮第一个tab
+					* 隐藏除第一个以外的content
+			 */
+			var tab = document.getElementsByClassName('tab')[0];
+			var header = tab.firstElementChild.children;
+			var content = tab.lastElementChild.children;
+
+			// 1）初始化
+			header[0].className = 'active';
+			for(var i=0;i<content.length;i++){
+				if(i>0){
+					content[i].style.display = 'none';
+				}
+
+				// 绑定事件
+				// 把i的值设置到html结构
+				// header[i].setAttribute('idx',i);
+				header[i].idx = i;
+				header[i].onclick = function(){
+					// 点击时获取html结构的idx属性
+					// var idx = this.getAttribute('idx');
+
+					// 获取当前点击的索引值
+					var idx = this.idx;
+
+					// 显示当前高亮，隐藏其他高亮
+					// 显示当前内容，隐藏其他内容
+					for(var i=0;i<header.length;i++){
+						if(i===idx){
+							header[i].className = 'active';
+							content[i].style.display = 'block';
+						}else{
+							header[i].className = '';
+							content[i].style.display = 'none';
+						}
+					}
+					
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div class="tab">
+		<header>
+			<div>Tab1</div>
+			<div>Tab2</div>
+			<div>Tab3</div>
+		</header>
+		<div class="content">
+			<div>Content1</div>
+			<div>Content2</div>
+			<div>Content3</div>
+		</div>
+	</div>
+</body>
+</html>

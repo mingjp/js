@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07内置构造函数的理解</title>
+	<script>
+		/*
+			* String
+			* Number
+			* Boolean
+			* Array
+			* Date
+			* RegExp
+			* Function
+			* Set
+			* Map
+			* ...
+		 */
+		
+		var str = new String('hello hello 大家好');
+		var res = str.substring(12);
+		console.log(str);
+
+
+		var arr = new Array(10,20,30);
+		var res2 = arr.unshift(5);
+		console.log(arr);
+
+		var obj = {
+			name:'xx',
+			toBasic:function(){console.log(66)}
+		}
+
+
+	</script>
+</head>
+<body>
+	<ul>
+		<li>data1</li>
+		<li>data2</li>
+		<li>data3</li>
+		<li>data4</li>
+		<li>data5</li>
+		<li>data6</li>
+		<li>data7</li>
+		<li>data8</li>
+		<li>data9</li>
+		<li>data10</li>
+	</ul>
+</body>
+</html>

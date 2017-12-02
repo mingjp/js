@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>04去除script标签及内容</title>
+    <style>
+        textarea{display: block;width:400px;height:60px;}
+    </style>
+    <script>
+    window.onload = function(){
+        var msg = document.getElementById('msg')
+        var btn = msg.nextElementSibling;
+
+        btn.onclick = function(){
+            var _msg = msg.value;
+
+            // 去除script标签及内容
+            var reg = /<script.*?>.*?<\/script>/g;
+
+            _msg = _msg.replace(reg,'');
+
+            console.log(_msg)
+
+        }
+        
+    }
+
+
+    </script>
+</head>
+
+<body>
+    <label for="username">留言板：</label>
+    <textarea id="msg"></textarea>
+    <button>提交</button>
+</body>
+
+</html>

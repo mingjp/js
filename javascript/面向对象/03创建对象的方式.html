@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03创建对象的方式</title>
+	<script>
+		/*
+			创建对象的方式：
+				* 字面量
+				* 构造函数
+					* new Object()
+					* 自定义构造函数（重点）
+				* 工厂函数（封装）
+					* 解决代码重复的问题
+					* 缺点：无法识别对象由谁创建
+			
+		 */
+		
+		// 创建一个学生
+		var student1 = {
+			name:'xxx',
+			age:'22',
+			gender:'男'
+		}
+
+		var student1 = new Object();
+		student1.name = 'xxx';
+		student1.age = 22;
+		student1.gender = '男';
+
+
+		// 工厂函数
+		function createStudent(name,age,gender){
+			var res = {}
+			res.name = name;
+			res.age = age;
+			res.gender = gender;
+
+			return res;
+		}
+
+		var s1 = createStudent('xxx',22,'女');
+		var s1 = createStudent('xxx',22,'女');
+		var s2 = createStudent('xxx',22,'女');
+		var s3 = createStudent('xxx',22,'女');
+		var s4 = createStudent('xxx',22,'女');
+		var s5 = createStudent('xxx',22,'女');
+		var s6 = createStudent('xxx',22,'女');
+		var s7 = createStudent('xxx',22,'女');
+		var s8 = createStudent('xxx',22,'女');
+
+
+		s6
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

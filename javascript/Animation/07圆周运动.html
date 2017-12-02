@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07圆周运动</title>
+	<style>
+		.big-circle{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:500px;height:500px;border:1px solid #f00;border-radius: 50%;}
+		.circle{position:absolute;width:20px;height:20px;background-color: #58bc58;border-radius: 50%;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			let circle = document.querySelector('.circle');
+			let bigCircle = document.querySelector('.big-circle');
+
+			// 获取中心
+			let center = {x:window.innerWidth/2,y:window.innerHeight/2};
+
+			// 大圆半径
+			let br = bigCircle.offsetWidth/2;
+
+			// 小圆半径
+			let r = circle.offsetWidth/2;
+
+
+			let deg = 0;
+
+			setInterval(()=>{
+				deg += 2;
+
+				deg %= 360;
+
+				// 计算弧度
+				let rad = deg*Math.PI/180;
+
+
+				let a = br*Math.cos(rad);
+				let b = br*Math.sin(rad);
+
+				// 小球移动时圆心位置
+				let x1 = center.x + a;
+				let y1 = center.y + b;
+
+				// 计算小球left,top值
+				let left = x1 - r;
+				let top = y1 - r;
+
+				circle.style.left = left + 'px';
+				circle.style.top = top + 'px';
+
+			},30);
+		})
+	</script>
+</head>
+<body>
+	<div class="circle"></div>
+	<div class="big-circle"></div>
+</body>
+</html>

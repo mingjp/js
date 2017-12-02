@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>20函数中的this</title>
+	<script>
+	window.onload = function(){
+		/*
+			this
+				函数中的this是一个关键字，表示当前对象，而当前对象是谁，取决于谁调用了这个函数
+				A和B在吵架：
+				A：老子打死你（老子表示A）
+				B：你来啊，老子好怕（老子表示B）
+		 */
+		function getMsg(){
+			// * arguments
+			// * this
+			console.log(this);
+		}
+
+		// 手动立即执行
+		getMsg();//window
+
+		var btn = document.getElementById('btn');
+
+		// 事件触发函数的执行
+		btn.onclick = getMsg;//button
+
+
+		// 获取输入框的内容
+		var username = document.getElementById('username');
+
+		username.onchange = function(){
+			// this === username
+			console.log(this.value);
+		}
+	}
+		
+	</script>
+</head>
+<body>
+	<button id="btn">点我</button>
+	<input type="text" id="username">
+</body>
+</html>

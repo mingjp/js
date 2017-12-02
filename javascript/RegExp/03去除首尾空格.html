@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>03去除首尾空格</title>
+    <script>
+    window.onload = function(){
+        var username = document.getElementById('username')
+        var btn = username.nextElementSibling;
+
+        btn.onclick = function(){
+            // 去除首尾空格
+            // str.replace(首尾的空格,'')
+            var _username = username.value;
+
+            var reg = /^\s+|\s+$/g;
+            _username = _username.replace(reg,'');
+            console.log('========================')
+            console.log(_username);
+
+        }
+        
+    }
+
+
+    </script>
+</head>
+
+<body>
+    <label for="username">用户名：</label>
+    <input type="text" id="username">
+    <button>提交</button>
+</body>
+
+</html>

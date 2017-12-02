@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>14获取非行内样式</title>
+	<style>
+		#box{width:600px;height:100px;padding:20px;border:1px solid #ddd;font-size:20px;box-sizing:border-box;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				* getComputedStyle(ele):得到ele元素的所有css样式
+				* ele.currentStyle
+			 */
+			var box = document.getElementById('box');
+
+			// 设置宽度
+			// box.style.width = 400 + 'px';
+
+			// 获取宽度
+			// 内联样式
+			var width1 = box.style.width;
+			console.log('style.width：',width1);
+
+			var width2 = box.offsetWidth;
+			console.log('offsetWidth:',width2);
+
+			if(window.getComputedStyle){
+				var css = getComputedStyle(box);
+				console.log('css.width',css.width);
+			}else{
+				// IE8-
+				console.log('currentStyle:',box.currentStyle.width)
+			}
+			
+
+			
+		}
+	</script>
+</head>
+<body>
+	<div id="box">test</div>
+</body>
+</html>

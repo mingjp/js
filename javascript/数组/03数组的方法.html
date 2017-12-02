@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03数组的方法</title>
+	<script>
+		/*
+			数组的操作
+			* 增
+				* 在前面添加
+				* 在后面添加
+			* 删
+				* 删除最后一个元素
+				* 删除第一个元素
+			* 查
+			* 改
+			*
+			
+			数组的方法：
+				* unshift() ：在数组前面添加，返回数组的长度
+				* push() ：在数组后面添加，返回数组的长度
+				* pop：删除数组最后一个元素，返回删除的元素
+				* shift()：删除数组第一个元素，返回删除的元素
+				* splice(start,deleteNum,...items)：在数组中插入、删除、替换的通用方法
+					* start：起始索引位置
+					* deleteNum：要删除的数量
+					* items：插入的元素（可以是多个）
+					* 返回值：返回由删除元素组成的数组
+		 */
+
+		var arr = [10,20,30];
+
+		// @添加
+		// 在数组后面面添加
+		// arr[arr.length] = 40;
+		// push()
+		var res1 = arr.push(40);
+		console.log('push:',arr,res1);
+
+		// 在数组前面添加
+		// unshift()
+		var res2 = arr.unshift(8,9);//返回值:5
+		console.log('unshift:',arr,res2);
+
+
+		// @删除
+		// 删除数组最后一个元素
+		// pop()
+		var res3 = arr.pop();
+		console.log('pop:',arr,res3);
+
+		// 删除数组第一个元素
+		// shift()
+		var res4 = arr.shift();
+		console.log('shift:',arr,res4);
+
+
+		// @任意位置操作数组
+		// 添加，删除，替换（先删除后添加）
+		var arr2 = ['laoxie','lemon','laolan','laogong','suying'];
+
+		// 删除lemon
+		// var res5 = arr2.splice(1,1);
+
+		// 删除lemon，laolan
+		// var res5 = arr2.splice(1,2);
+
+		// 添加lenmon的中文名到lemon后
+		// var res5 = arr2.splice(2,0,'老叶','小仙女');
+
+		// 把suying替换成“苏宁”
+		var res5 = arr2.splice(4,1,'苏宁');
+		console.log(arr2,res5);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

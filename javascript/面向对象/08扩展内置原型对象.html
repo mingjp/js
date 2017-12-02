@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08扩展内置原型对象</title>
+	<script>
+		/*
+			扩展内置原型对象
+				* 兼容trim方法
+		 */
+		
+		// 判断浏览器是否支持trim
+		if(!String.prototype.trim){
+			String.prototype.trim = function(){
+				// 如何再此处得到username这个字符串
+				// this
+				var res = this.replace(/^\s+|\s+$/g,'');
+				return res;
+			}
+		}
+		
+		
+		var username = '   lao xie    ';
+		var res = username.trim();
+		console.log(res);
+
+
+		/*
+			字符串为什么能像对象一样使用？
+			username.trim();
+				1. 创建一个临时对对象 var temp = new String(username);
+				2. 利用临时对象调用方法并返回值：return temp.trim();
+				3. 删除临时对象
+		 */
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

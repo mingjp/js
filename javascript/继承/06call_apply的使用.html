@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06call_apply的使用</title>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				借用
+					* call(obj,params...)
+					* apply(obj,arr)
+			 */
+			var buttons = document.getElementsByTagName('button');
+
+			console.log(buttons)
+
+			// 想达到的效果
+			// buttons.forEach(function(ele){
+
+			// });
+
+			Array.prototype.forEach.call(buttons,function(ele,idx){
+				console.log(ele);
+
+				ele.onclick = function(){
+					console.log(idx);
+				}
+			});
+
+
+			// 查找数组中的最大值
+			var arr = [20,2,40,33,21,8,22,46,32];
+
+			var max = Math.max.apply(null,arr);
+			// Math.max(20,2,40,33,21,8,22,46,32)
+			console.log(max);
+
+
+
+			// 封装获取最大值的函数
+			function max(){
+				return Math.max.apply(null,arguments);
+			}
+
+			max(20,2,40,33,21,8,22,46,32);
+
+		});
+	</script>
+</head>
+<body>
+	<button>button1</button>
+	<button>button2</button>
+	<button>button3</button>
+	<button>button4</button>
+	<button>button5</button>
+</body>
+</html>

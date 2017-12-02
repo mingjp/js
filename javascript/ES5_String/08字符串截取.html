@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08字符串截取</title>
+	<script>
+		var	str1 = 'good good study, day day up';
+		var str2 = 'no zuo no die';
+		var str3 = 'you can you up';
+
+		// substring(start,end)
+		// 从start开始到end(但不包括end)
+		console.log('substring:',str1.substring(5,15));
+
+		// substr(start,length)
+		// start支持负数
+		console.log('substr:',str1.substr(5,15));
+
+		// slice(start,end)，与substing相同
+		// 支持负数
+		console.log('slice:',str1.slice(5,15));
+
+		// 后面的参数都可以省略
+		// 省略end或length表示获取到最后
+		str1.substring(17);//day day up
+		str1.substr(-10);//day day up
+		str1.slice(-10);//day day up
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

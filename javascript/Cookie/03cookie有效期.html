@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01cookie的写入</title>
+	<script>
+	/*
+		cookie参数：
+			格式：参数名=参数值
+			* expires
+	 */
+		document.cookie = 'username=laoxie';//临时cookie,关闭浏览器后失效
+
+		// 保存7天
+		var date = new Date();
+		date.setDate(date.getDate()+7);//7天后的时间
+
+		document.cookie = 'password=123456;expires=' + date.toString();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

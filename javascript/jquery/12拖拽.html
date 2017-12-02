@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11自定义事件</title>
+	<style>
+		.box{position:absolute;top:0;left:0;height:100px;width:100px;background-color: #f00;}
+	</style>
+	<script src="lib/jquery-3.1.1.js"></script>
+	<script>
+		/*
+			事件命名空间
+			* 给事件定义一个名字
+			* 格式：事件类型.事件名
+			* 需要移除事件时，建议使用事件命名空间
+		 */
+		jQuery(function($){
+			// 其他成员
+			$(document).on('mousemove',function(e){
+				console.log(e.clientX,e.clientY);
+			});
+
+			// 拖拽功能
+			$('.box').on('mousedown',function(e){
+				var ox = e.offsetX;
+				var oy = e.offsetY;
+
+				$(document).on('mousemove.drag',function(evt){
+					$('.box').css({
+						top:evt.clientY - oy,
+						left:evt.clientX - ox
+					});
+				});
+			});
+
+			$(document).on('mouseup',function(){
+				$(document).off('mousemove.drag');
+			})
+
+
+			
+			
+
+		});
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

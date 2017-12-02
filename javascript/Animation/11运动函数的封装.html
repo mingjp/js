@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11运动函数的封装</title>
+	<style>
+		.box{/*position:absolute*/;margin:10px 0;width:100px;height:50px;background-color: #f00;}
+		.content{width:200px;height:100px;background-color: #58bc58;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			let box = document.querySelectorAll('.box');
+			let content = document.querySelector('.content');
+
+			// animate(box,'top',300);
+			// animate(box,'width',600);
+			// animate(box,'height',200);
+			// animate(box,'opacity',0.5);
+
+			for(let i=0;i<box.length;i++){
+				// animate(box[i],'opacity',0.5);
+				animate(box[i],{'opacity':0.5});
+				box[i].onmouseover = ()=>{
+					// animate(box[i],'height',100);
+					// animate(box[i],'width',200);
+					// animate(box[i],'opacity',1);
+
+					animate(box[i],{height:100,width:200,opacity:1})
+				}
+
+				box[i].onmouseout = ()=>{
+					// animate(box[i],'height',50);
+					// animate(box[i],'width',100);
+					// animate(box[i],'opacity',0.5);
+
+					animate(box[i],{height:50,width:100,opacity:0.5})
+				}
+			}
+
+
+			// 宽度改到800后立即改变高度
+			// 宽度动画完成后，马上执行高度动画
+			animate(content,{width:800,opacity:0.8},function(){console.log(666)
+				animate(content,{height:200})
+			})
+			
+
+			
+		})
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+	<div class="box"></div>
+	<div class="content"></div>
+</body>
+</html>

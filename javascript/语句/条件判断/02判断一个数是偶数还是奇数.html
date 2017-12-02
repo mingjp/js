@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断一个数是偶数还是奇数，并输出判断结果；</title>
+	<style>
+		.even{color:#f00;}
+	</style>
+</head>
+<body>
+	<input type="text" id="num"><button onclick="check()">判断奇偶</button>
+	<div id="output"></div>
+	<script>
+		/*
+			判断一个数是偶数还是奇数，并输出判断结果；
+
+			* 利用js写入元素内容
+	 			* innerHTML（双标签元素）
+	 			* value(表单元素)
+		 */
+		var num = document.getElementById('num');
+		var output = document.getElementById('output');
+		
+		function check(){
+			// 获取输入的值
+			var _num = num.value;//String
+
+			// 判断奇偶
+			if(_num%2===0){
+				// alert('偶数')
+				// document.write('偶数');
+				output.innerHTML = '<strong class="even">偶数</strong>';
+			}else{
+				// alert('奇数');
+				// document.write('奇数');
+				output.innerHTML = '奇数';
+			}
+		}
+	</script>
+</body>
+</html>

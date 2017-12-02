@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03减速运动（刹车）</title>
+	<style>
+		.car{width:200px;position: absolute;top:50%;left:0;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			/*
+				减速运动
+					速度不断减小的运动
+			 */
+			let car = document.querySelector('.car');
+
+			let speed = 100;
+
+			let timer = setInterval(()=>{
+				// 先获取当前left值
+				let left = car.offsetLeft;
+
+				speed -= 5;
+
+				// 当速度等于0时，停止运动
+				if(speed<=0){
+					clearInterval(timer);
+					speed = 0;
+				}
+
+				car.style.left = left + speed + 'px';
+			},30)
+		})
+	</script>
+</head>
+<body>
+	<img src="img/car.jpg" class="car">
+</body>
+</html>

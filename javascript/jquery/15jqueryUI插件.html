@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15jqueryUI插件</title>
+	<link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.css">
+	<style>
+		.box{width:100px;height:100px;background-color: #f00}
+		.container{width:800px;height:400px;background-color: #efefef;}
+	</style>
+
+</head>
+<body>
+	<div class="box"></div>
+
+	<div class="container"></div>
+	
+	<!-- 使用插件的步骤
+		1.引入jquery
+		2.引入插件
+		3.引入相关文件（css、语言包）
+	 -->
+	 <script src="lib/jquery-3.1.1.js"></script>
+	 <script src="lib/jquery-ui-1.12.1/jquery-ui.js"></script>
+	 <script>
+	 	jQuery(function($){
+	 		// $('.box').draggable({ axis: "x" });
+	 		// $('.box').draggable({ containment: ".container" })
+	 		$('.box').resizable();
+	 	});
+	 </script>
+</body>
+</html>

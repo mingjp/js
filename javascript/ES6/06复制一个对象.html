@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06复制一个对象</title>
+	<script>
+		var person = {
+			name:'lemon',
+			age:28,
+			gender:'女'
+			hobbdy:['a','b','c']
+		}
+
+		// 复制一个person
+		// person.cloneNode(true);
+
+		// 传统的方式：
+		var obj = {};
+		for(var attr in person){
+			obj[attr] = person[attr];
+		}
+
+		// ES6:对象的复制
+		var obj2 = Object.assign({},person,{name:'laoxie',hobbdy:'很多'});
+		console.log(obj2);
+
+		
+		// 复制对象的方式3
+		// 深拷贝：
+		var obj3 = JSON.parse(JSON.stringify(person));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

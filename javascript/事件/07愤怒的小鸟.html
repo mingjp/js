@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07愤怒的小鸟</title>
+	<style>
+		html,body{height:100%;overflow: hidden;}
+		img{position:absolute;top:0;left:0;width:200px;}
+		.right{transform:rotateY(180deg);}
+		.down{transform: rotateZ(-45deg);}
+		.up{transform: rotateZ(45deg);}
+	</style>
+	<script>
+		/*
+			* document.images：得到页面上所有图片节点
+			* event
+				* keyCode/which
+			* 兼容性写法
+				* e = e || window.event;
+				* var keyCode = e.keyCode || e.which
+		 */
+		window.onload = function(){
+			// var angryBird = document.getElementsByTagName('img')[0];
+			var angryBird = document.images[0];
+
+			var speed = 10;
+
+			document.onkeydown = function(e){
+				e = e || window.event;
+
+				/*var keyCode
+				if(e.keyCode){
+					keyCode = e.keyCode
+				}else{
+					keyCode = e.which;
+				}
+
+				var keyCode = e.keyCode ? e.keyCode : e.which;*/
+
+				var keyCode = e.keyCode || e.which;
+
+				// 获取当前所在位置
+				var left = angryBird.offsetLeft;
+				var top = angryBird.offsetTop;
+
+				var direction = '';
+
+				if(e.keyCode === 37){
+					left = left - speed;
+					direction = '';
+				}
+
+				// right
+				else if(e.keyCode === 39){
+					left = left + speed;
+					direction = 'right';
+				}
+
+				//up
+				else if(e.keyCode === 38){
+					top = top - speed;
+					// left = left + 2;
+					direction = 'up';
+				}
+
+				//down
+				else if(e.keyCode === 40){
+					top = top + speed;
+					// left = left - 2;
+					direction = 'down';
+
+				}
+
+				// 超出浏览器可视区域处理
+				if(top < -angryBird.offsetHeight){
+					top = window.innerHeight;
+				}else if(top > window.innerHeight){
+					top = -angryBird.offsetHeight;
+				}
+
+				if(left < -angryBird.offsetWidth){
+					left = window.innerWidth;
+				}else if(left >  window.innerWidth){
+					left = - angryBird.offsetWidth;
+				}
+
+				// 给小鸟设置样式（top,left,方向）
+				angryBird.style.top = top + 'px';
+				angryBird.style.left = left + 'px';
+				angryBird.className = direction;
+			}
+		}
+	</script>
+</head>
+<body>
+	<img src="img/bird.jpg">
+</body>
+</html>

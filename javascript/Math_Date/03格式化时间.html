@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>将当前日期格式化输出为 “2015年08月24 星期五”格式</title>
+	<script>
+		/*
+			将当前日期格式化输出为 “2015年08月24 星期五”格式
+		 */
+		
+		// 获取当前时间
+		var now = new Date();
+
+		// 获取年份
+		var year = now.getFullYear();
+
+		// 获取月份：月份从0开始
+		var month = now.getMonth()+1;
+
+		// 获取日期：
+		var date = now.getDate();
+
+		// 获取星期
+		// 日-六:0-6
+		var weekStr = ['星期天','星期一','星期二','星期三','星期四','星期五','星期六']
+		var week = now.getDay();
+		console.log(week)
+
+		document.write(year + '年' + month + '月' + date + '日 ' + weekStr[week]);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

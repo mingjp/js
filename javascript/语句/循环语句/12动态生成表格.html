@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12动态生成表格</title>
+	<style>
+		table{border:1px solid #ddd;width:100%;border-collapse:collapse;}
+		table td{border:1px solid #ddd;padding:5px 10px;}
+	</style>
+</head>
+<body>
+	<label for="row">行：</label>
+	<input type="text" id="row">
+	<label for="col">列：</label>
+	<input type="text" id="col">
+	<button onclick="createTable()">生成表格</button>
+	<div id="output"></div>
+	<!-- <table>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table> -->
+	<script>
+		/*
+			思路：
+				1) 获取元素
+				2）点击按钮生成表格
+					* 获取输入的值
+					* 根据输入的行数拼接表格html结构
+					* 把拼接的html解构写入#output
+		 */
+		
+		// 1) 获取元素
+		var row = document.getElementById('row');
+		var col = document.getElementById('col');
+		var output = document.getElementById('output');
+
+		// 声明一个函数
+		// 用于生成表格代码
+		function createTable(){
+			// * 获取输入的值
+			var _row = row.value;
+			var _col = col.value;
+
+			// 用保存table的html结构
+			var tableHtml = '<table><tbody>';
+
+			// 外层循环控制行
+			for(var i=1;i<=_row;i++){
+				tableHtml += '<tr>';
+
+				// 显示行号
+				tableHtml+='<td>'+i+'</td>';
+
+				// 内层循环控制列
+				for(var j=1;j<=_col;j++){
+					tableHtml+='<td>单元格'+i+j+'</td>';
+				}
+
+				// 编辑/删除
+				tableHtml+='<td><button>编辑</button><button>删除</button></td>';
+
+
+				// 闭合tr
+				tableHtml += '</tr>';
+			}
+
+			// 闭合table,tbody标签
+			tableHtml += '</tbody></table>';
+
+			console.log(tableHtml);
+			output.innerHTML=tableHtml;
+
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>16拖拽效果</title>
+	<style>
+		#box{position:absolute;top:0;left:0;width:200px;height:200px;background-color: #f00;}
+		#box img{width:100%;}
+	</style>
+	<script>
+		window.onload = function(){
+			var box = document.getElementById('box');
+
+			// 鼠标按下并移动（开始拖拽）
+			box.onmousedown = function(evt){
+				evt = evt || window.event;
+				// 在摁下时，记录摁下的位置
+				// 摁下光标位置距离事件源对象的偏移量
+				// offsetX,offsetY
+				var ox = evt.offsetX;
+				var oy = evt.offsetY;
+
+
+				document.onmousemove = function(e){
+					e = e || window.event;
+
+
+					// 在拖拽的过程中不断改变#box的top,left
+					box.style.left = e.clientX - ox + 'px';
+					box.style.top =  e.clientY - oy + 'px';
+
+
+					if(e.preventDefault){
+						e.preventDefault();
+					}else{
+						e.returnValue = false;
+					}
+				}
+			}
+
+			// 鼠标松开（拖拽完成）
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box"><img src="img/big_1.jpg"></div>
+</body>
+</html>

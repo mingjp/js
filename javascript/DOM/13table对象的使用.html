@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table{margin-top:20px;width:800px;border:1px solid #ddd;border-collapse:collapse;}
+		td,th{border:1px solid #ddd;padding:5px 10px;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			var row = document.getElementById('row');
+			var col = document.getElementById('col');
+			var btn = col.nextElementSibling;
+			var datalist = document.getElementById('datalist');
+
+			// 给按钮绑定事件
+			btn.onclick = function(){
+				var _row = row.value;
+				var _col = col.value;
+
+				var table = document.createElement('table');
+
+				for(var i=0;i<_row;i++){
+					var tr = table.insertRow(i);
+					// 随机背景色
+					tr.style.backgroundColor = randomColor();
+
+					for(var j=0;j<_col;j++){
+						var td = tr.insertCell(j);
+						td.innerHTML = '单元格' + (i+1) + (j+1);
+					}
+
+					// 删除
+					tr.insertCell(j).innerHTML = '<button>&times;</button>';
+
+					// 添加行号
+					tr.insertCell(0).innerText = i+1;
+				}
+
+				// 把表格写入#datalist
+				datalist.innerHTML = '';
+				datalist.appendChild(table);
+
+
+				var btnDels = datalist.getElementsByTagName('button');
+				for(var i=0;i<btnDels.length;i++){
+					btnDels[i].onclick = function(){
+						var currentTr = this.parentNode.parentNode;
+						var idx = currentTr.sectionRowIndex;
+						currentTr.parentNode.deleteRow(idx);
+					}
+				}
+
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<label for="row">行</label>
+	<input type="text" id="row">
+	<label for="col">行</label>
+	<input type="text" id="col">
+	<button>生成表格</button>
+	<div id="datalist"></div>
+</body>
+</html>

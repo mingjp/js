@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08进度条</title>
+	<style>
+		#loading{position:relative;height:6px;width:0;background-color: #58bc58;}
+		#percent{position:absolute;left:50%;top:110%;transform:translate(-50%,0);font-size:10px;}
+	</style>
+	<script>
+		window.onload = function(){
+			var btn = document.getElementById('btn');
+			var loading = document.getElementById('loading');
+			var percent = document.getElementById('percent');
+
+			// 点击按钮，出现进度条加载效果
+			var width = 0;
+			btn.onclick = function(){
+				var timer = setInterval(function(){
+					width +=0.5;
+					if(width>=100){
+						clearInterval(timer);
+					}
+					percent.innerHTML = width + '%';
+					loading.style.width = width + '%';
+				},50);
+				
+			}
+		}
+	</script>
+</head>
+<body>
+	<button id="btn">加载</button>
+	<div id="loading"><span id="percent"></span></div>
+</body>
+</html>

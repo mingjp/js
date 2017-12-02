@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01事件绑定方式</title>
+	<script>
+	// 事件绑定方式1：html属性绑定方式
+	function sum(n){
+		console.log(n);
+		console.log('HTML 666');
+	}
+
+	window.onload = function(){
+		var btn = document.getElementById('btn');
+
+		// 在函数内部定义全局变量/函数
+		// window.属性
+		window.go = function(){
+
+		}
+
+		// 事件绑定方式2：DOM节点绑定方式
+		btn.onclick = function(){
+			console.log('DOM 666')
+		}
+
+
+		var go = 100;
+	}
+		
+
+
+	</script>
+</head>
+<body>
+	<button onclick="sum(100)">HTML属性绑定</button>
+	<button id="btn">DOM节点绑定</button>
+</body>
+</html>

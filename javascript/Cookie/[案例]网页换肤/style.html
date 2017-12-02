@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>网页换肤</title>
+<link id="link" href="css/css1.css" rel="stylesheet" type="text/css" />
+<script src="../../common.js"></script>
+<script>
+window.onload = function(){
+
+	/*
+		思路：利用cookie实现网页换肤
+			1）实现换肤功能
+				1>点击按钮替换#link的href属性
+				2>把替换的结果保存到cookie
+			2）刷新页面或重新打开时，读取cookie
+				得到cookie的值，然后修改#link的href属性
+	 */
+	var link = document.getElementById('link');
+	var btnClear = document.getElementById('btnClear');
+	var message = document.getElementById('message');
+	var btns = message.getElementsByTagName('button');
+
+	for(var i=0;i<btns.length;i++){
+		btns[i].onclick = function(e){
+			e = e || window.event;
+			var cssname = this.getAttribute('data-css');
+			link.href = 'css/'+cssname+'.css';
+
+			// 把css名字存入cookie
+			var date = new Date();
+			date.setDate(date.getDate()+7);
+			Cookie.set('skin',cssname,{expires:date.toUTCString()});
+
+			e.preventDefault ?  e.preventDefault() : e.returnValue = false;
+		}
+	}
+
+	// 页面刷新获取cookie
+	var skin = Cookie.get('skin');
+	if(skin){
+		link.href = 'css/'+ skin + '.css';
+	}
+
+	// 清除cookie
+	btnClear.onclick = function(){
+		Cookie.remove('skin');
+	}
+}
+
+</script>
+</head>
+<body>
+
+<dl id="message">
+	<form>
+		<dt>
+			<strong>可以换肤的提交框：</strong>
+			<button data-css="css1">皮肤1</button>
+			<button data-css="css2">皮肤2</button>
+		</dt>
+		<dd>输入姓名：<input class="text" type="text" /></dd>
+		<dd>输入密码：<input class="text" type="password" /></dd>
+		<dd>请您留言：<textarea></textarea></dd>
+		<dd class="center"><input class="btn" type="submit" value="提交" /></dd>
+	</form>
+</dl>
+<button id="btnClear">清除cookie</button>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04一周表情包</title>
+	<script>
+		window.onload = function(){
+			var week = document.getElementById('week');
+			var time = document.getElementById('time');
+
+			var now = new Date();
+
+			var week_str = '星期天，星期一，星期二，星期三，星期四，星期五，星期六'.split('，');
+
+			// 获取星期
+			// 0-6
+			var _week = now.getDay();
+
+			week.src = 'img/face/'+_week+'.png';
+			time.innerHTML = week_str[_week];
+		}
+	</script>
+</head>
+<body>
+	<img src="img/face/0.png" id="week">
+	<h4 id="time"></h4>
+</body>
+</html>

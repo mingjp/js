@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获取本机外网ip</title>
+	<script>
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState===4 && (xhr.status===200 || xhr.status === 304)){
+				console.log(xhr.responseText);
+			}
+		}
+		xhr.open('get','../api/get_outer_ip.php',true);
+		xhr.send();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

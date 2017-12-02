@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>16计算阶乘</title>
+	
+</head>
+<body>
+	<input type="text" id="number">
+	<button onclick="factorial()">阶乘</button>
+	<div id="output"></div>
+
+	<script>
+		/*
+			5! = 1 * 2 * 3 * 4 * 5
+		 */
+		
+		// 获取元素
+		var number = document.getElementById('number');
+		var output = document.getElementById('output');
+
+		function factorial(){
+			var num = Number(number.value);
+
+			var total = 1;
+			for(var i=1;i<=num;i++){
+				total *= i;
+			}
+
+			output.innerHTML = total;
+		}
+
+	</script>
+</body>
+</html>

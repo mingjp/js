@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>tab选项卡</title>
+    <style>
+    ul{list-style:none;padding:0;margin:0;}
+    .tab{width:500px;margin:0 auto;position:relative;}
+    .tab .header{height:30px;border-bottom:2px solid #ddd;}
+    .tab .header li{display:inline-block;padding:5px 15px;}
+    .tab .header li.active{font-weight:bold;color:#f60;}
+    .content{position:absolute;top:32px;left:0;padding:20px;width:500px;border:1px solid #ddd;background-color: #efefef;text-align:center;}
+    </style>
+    <script src="lib/jquery-3.1.1.js"></script>
+    <script>
+        jQuery(function($){
+            var $tab = $('.tab');
+            var $content = $tab.children('.content');
+            var $tabItem = $tab.find('.header li');
+
+
+            // 隐藏除第一个以外的.content
+            $content.slice(1).hide();
+
+            // 高亮显示第一个tab
+            $tabItem.first().addClass('active');
+
+            $tab.on('click','.header li',function(){
+                // 获取当前索引值
+                var idx = $(this).index();
+
+                // 高亮
+                $(this).addClass('active').siblings('li').removeClass();
+
+                // 显示对应的内容
+                $content.eq(idx).fadeIn().siblings('.content').fadeOut();
+            });
+
+        })
+    </script>
+</head>
+
+<body>
+    <div class="tab">
+        <ul class="header">
+            <li>选项1</li>
+            <li>选项2</li>
+            <li>选项3</li>
+            <li>选项4</li>
+            <li>选项5</li>
+        </ul>
+        <div class="content"><img src="img/g1.jpg"></div>
+        <div class="content"><img src="img/g2.jpg"></div>
+        <div class="content"><img src="img/g3.jpg"></div>
+        <div class="content"><img src="img/g4.jpg"></div>
+        <div class="content"><img src="img/g5.jpg"></div>
+    </div>
+    <div id="output"></div>
+</body>
+
+</html>

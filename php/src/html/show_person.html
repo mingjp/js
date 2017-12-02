@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示个人信息</title>
+	<script>
+
+		// 名字
+		var p_name = new Promise(function(resolve,reject){
+			var xhr_name = new XMLHttpRequest();
+			xhr_name.onload = function(){
+				var name = xhr_name.responseText;
+				console.log(name);
+
+				resolve(name);
+			}
+			xhr_name.open('get','../api/person_name.php',true);
+			xhr_name.send();
+		});
+		
+
+		var p_age = new Promise(function(resolve,reject){
+			// 年龄
+			var xhr_age = new XMLHttpRequest();
+			xhr_age.onload = function(){
+				var age = xhr_age.responseText;
+				console.log(age);
+
+				resolve(age);
+			}
+			xhr_age.open('get','../api/person_age.php',true);
+			xhr_age.send();
+		});
+
+
+		var p_gender = new Promise(function(resolve,reject){
+			// 性别
+			var xhr_gender = new XMLHttpRequest();
+			xhr_gender.onload = function(){
+				var gender = xhr_gender.responseText;
+				console.log(gender);
+
+				resolve(gender);
+			}
+			xhr_gender.open('get','../api/person_gender.php',true);
+			xhr_gender.send();
+		});
+		
+
+		var p_hobby = new Promise(function(resolve,reject){
+			// 爱好
+			var xhr_hobby = new XMLHttpRequest();
+			xhr_hobby.onload = function(){
+				var hobby = xhr_hobby.responseText;
+				console.log(hobby);
+
+				resolve(hobby);
+			}
+			xhr_hobby.open('get','../api/person_hobby.php',true);
+			xhr_hobby.send();
+		});
+
+
+
+		// 将多个Promise实例，包装成一个新的Promise实例
+		var p_all = Promise.all([p_name,p_age,p_gender,p_hobby]);
+
+		p_all.then(function(data){
+			console.log(data);
+			// 待所有的promise对象（p_name,p_age,p_gender,p_hobby）的状态都为Resolved后，p_all的状态才变成Resolved（执行这里的代码）
+
+			document.write(`${data}`)
+		}).catch(function(){
+			document.write('失败');
+		});
+
+
+		// 竞速
+		Promise.race([p_name,p_age,p_gender,p_hobby]).then(function(data){
+			console.log('race:',data);
+		});
+
+
+
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

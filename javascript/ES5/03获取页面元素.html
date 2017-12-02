@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03获取页面元素</title>
+	<script>
+	document.addEventListener('DOMContentLoaded',function(){
+		/*
+			* document.getElementById()
+			* getElementsByTagName()
+			* getElementsByClassName()
+			* document.getElementsByName()
+
+			ES5:
+			* querySelector(css选择器):获取匹配选择器的第一个元素节点，返回DOM节点
+			* querySelectorAll(css选择器)
+		 */
+		
+		// var datalist = document.getElementsByClassName('datalist');
+		var datalist = document.querySelector('.datalist');console.log(datalist)
+
+		var lis = datalist.querySelectorAll('li');console.log(lis);
+
+		// 第二个
+		var secLi = datalist.querySelectorAll('li:nth-child(2)');console.log(secLi)
+
+		var h4 = datalist.querySelectorAll('h4');
+
+		var p = document.querySelectorAll('.datalist p');
+	})
+		
+	</script>
+</head>
+<body>
+	<div class="datalist">
+		<ul>
+			<li>
+				<img src="" alt="">
+				<h4>1</h4>
+				<p class="price"></p>
+			</li>
+			<li>
+				<img src="" alt="">
+				<h4>2</h4>
+				<p class="price"></p>
+			</li>
+			<li>
+				<img src="" alt="">
+				<h4>3</h4>
+				<p class="price"></p>
+			</li>
+			<li>
+				<img src="" alt="">
+				<h4>4</h4>
+				<p class="price"></p>
+			</li>
+		</ul>
+	</div>
+	<div class="datalist">2</div>
+</body>
+</html>

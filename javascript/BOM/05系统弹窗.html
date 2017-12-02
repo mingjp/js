@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05系统弹窗</title>
+	<script>
+	window.onload = function(){
+		// alert(666);
+
+		
+		var username = prompt('好汉，报上你的大名');
+
+		console.log(username);
+
+		console.log(6666);
+		
+		var btnDelete = document.getElementById('btnDelete');
+		var title = document.getElementById('title');
+		var btnAd = document.getElementById('btnAd');
+
+		btnDelete.onclick = function(){
+			var res = confirm('你确定要删除这条数据');
+
+			if(res){
+				title.style.display = 'none';
+			}
+		}
+
+
+		// 广告弹窗
+		btnAd.onclick = function(){
+			open('http://www.baidu.com','mybd');
+		}
+
+		
+	}
+	</script>
+</head>
+<body>
+	<h1 id="title">05系统弹窗</h1>
+	<button id="btnDelete">删除</button>
+
+	<button id="btnAd">广告弹窗</button>
+</body>
+</html>

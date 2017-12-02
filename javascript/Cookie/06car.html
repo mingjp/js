@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		#goodsList li{position:relative;padding-bottom:15px;margin-bottom:15px;border-bottom:1px solid #ddd;}
+		#goodsList img{display:block;width:100px;}
+		#goodsList li .btn-close{position:absolute;top:0;right:0;padding:0 5px;cursor:default;}
+		#goodsList li .btn-close:hover{background-color:#f00;color:#fff;}
+		.subPrice{padding:5px 20px;color:#f00;font-weight:bold;text-align:right;}
+		#goodsList .price{color:#f00;}
+		.price span::before{
+			content:'￥';
+			font-size:11px;
+		}
+	</style>
+	<script>
+	window.onload = function(){
+		var subPrice = document.getElementsByClassName('subPrice')[0];
+
+
+		// 读取cookie
+		// 得到添加到购物车所有商品信息carlist
+		var cookies = document.cookie;
+
+		var carlist = [];
+		if(cookies.length>0){
+			cookies = cookies.split('; ');
+			cookies.forEach(function(cookie){
+				var temp = cookie.split('=');
+
+				if(temp[0] === 'carlist'){
+					// 把json字符串转成数组
+					carlist = JSON.parse(temp[1]);
+				}
+			});
+		}
+
+		// 利用cookie中的数据生成html结构
+		var goodsList = document.getElementById('goodsList');
+
+		function render(){
+			// 计算总价
+			var totalPrice = 0;
+
+			var ul = document.createElement('ul');
+			ul.innerHTML = carlist.map(function(item){
+				totalPrice += item.price * item.qty;
+				return '<li data-guid="'+item.id+'">'
+						+ '<img src="'+item.imgurl+'"/>'
+						+ '<h4>'+item.title+'</h4>'
+						+ '<p class="price"><span>'+item.price+'</span>&times;'+item.qty+'</p>'
+						+ '<span class="btn-close">&times;</span>'
+				+'</li>';
+			}).join('');
+
+			// 添加前先清空
+			goodsList.innerHTML = '';
+			goodsList.appendChild(ul);
+
+			// 把总价写入页面
+			subPrice.innerHTML = totalPrice.toFixed(2);
+		}
+
+		render();
+
+		// 清空购物车
+		var btnClear = document.getElementById('btnClear');
+
+		btnClear.onclick = function(){
+			var date = new Date();
+			date.setDate(date.getDate()-10);
+			document.cookie = 'carlist=x;expires=' + date.toUTCString();
+
+			// 清空DOM节点
+			goodsList.innerHTML = '';
+
+			// 清空价格
+			subPrice.innerHTML = '0.00';
+		}
+
+
+		// 删除单个商品
+		// 思路：
+		// 1.拿到删除商品的guid
+		// 2.根据guid查找cookie中对应的数据，并删除
+		// 3.重写cookie
+		goodsList.onclick = function(e){
+			e = e || window.event;
+			var target = e.target || e.srcElement;
+
+			if(target.className === 'btn-close'){
+				var currentLi = target.parentNode;
+				var guid = currentLi.getAttribute('data-guid');
+
+				for(var i=0;i<carlist.length;i++){
+					if(carlist[i].id === guid){
+						carlist.splice(i,1);
+						break;
+					}
+				}
+
+				var date = new Date();
+				date.setDate(date.getDate()+15);
+				document.cookie = 'carlist=' + JSON.stringify(carlist) + ';expires=' + date.toUTCString();
+
+				render();
+			}
+		}
+
+	}
+		
+	</script>
+</head>
+<body>
+	<h1>购物车</h1>
+	<div id="goodsList">
+		
+	</div>
+	<div class="subPrice"></div>
+	<a href="#" id="btnClear">清空购物车</a>
+</body>
+</html>

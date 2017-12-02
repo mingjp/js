@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01jquery的使用</title>
+
+	<!-- 本地文件 -->
+	<script src="lib/jquery-3.1.1.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+
+		});
+
+		// jQuery延迟代码执行
+		// DOM树完成时执行
+		jQuery(document).ready(function(){
+			console.log(666);
+			console.log(jQuery('.box'));
+		});
+
+		// 简化
+		// jQuery别名：$
+		$(document).ready(function(){
+
+		});
+
+		// 再简化
+		$(()=>{
+			console.log(777);
+			console.log($('.box'));
+
+			// 实例：jquery对象
+			// $('.box')
+		});
+	</script>
+</head>
+<body>
+	<div class="box">jquery的使用</div>
+	<div class="box">222</div>
+</body>
+</html>

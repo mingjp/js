@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>求出1-1/2+1/3-1/4…..1/100的和</title>
+	<script>
+		/*
+			求出+1/1-1/2+1/3-1/4…..1/100的和
+		 */
+		
+		var total = 0;
+
+		for(var num=1;num<=100;num++){
+			// 偶数相减
+			if(num%2===0){
+				// total = total - 1/num;
+				total -= 1/num;
+			}
+
+			// 奇数相加
+			else{
+				total += 1/num;
+			}
+		}
+
+		document.write('求出+1/1-1/2+1/3-1/4…..1/100的和：' + total);
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

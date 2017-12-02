@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对密码进行ascii码加密和解密</title>
+	<script>
+		window.onload = function(){
+			var password = document.getElementById('password');
+			var btnEncode = document.getElementById('btnEncode');
+			var btnDecode = document.getElementById('btnDecode');
+			var output = document.getElementById('output');
+
+			// 加密
+			btnEncode.onclick = function(){
+				var _psw = password.value;
+
+				output.innerHTML = encode(_psw);
+			}
+
+			function encode(str){
+				// 保存加密后的数据
+				var res = '';
+
+				for(var i=0;i<str.length;i++){
+					res += str.charCodeAt(i) + ',';
+				}
+
+				// 删除多余的逗号
+				res = res.slice(0,-1);
+
+				return res;
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="password">
+	<button id="btnEncode">加密</button>
+	<button id="btnDecode">解密</button>
+	<div id="output"></div>
+</body>
+</html>

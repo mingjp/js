@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>14事件捕获</title>
+	<style>
+		div{padding:20px;background-color: #f00;color:#fff;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				事件清除
+					* DOM节点绑定方式
+						* 覆盖同名事件
+					* 事件监听器
+						* removeEventListener()
+							* 传入的所有参数要跟添加时一样，否则无法移除事件
+							* 需要清除事件时，添加的事件处理函数必须封装成独立的函数
+			 */
+			var box = document.getElementById('box');
+			var btn = document.getElementById('btnClear');
+
+
+			box.onclick = function(){
+				console.log(666)
+			}
+
+
+			function goHandler(){
+				console.log('gogogo');
+			}
+
+			box.addEventListener('mousedown',goHandler,true);
+
+			// 清除box的click事件
+			btn.onclick = function(){
+				box.onclick = null;
+
+				box.removeEventListener('mousedown',goHandler,true);
+			}
+
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">事件捕获</div>
+	<button id="btnClear">清除事件</button>
+</body>
+</html>

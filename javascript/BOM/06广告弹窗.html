@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06广告弹窗</title>
+	<script>
+	window.onload = function(){
+		for(var i=0;i<10;i++){
+			var width = parseInt(Math.random()*800);
+			var height = parseInt(Math.random()*800);
+			var left = parseInt(Math.random()*800);
+			var top = parseInt(Math.random()*800);
+			var my = open('http://www.baidu.com','mybd'+i,'width='+width+',height='+height+',top='+top+',left='+left+'');
+
+			// my.close();
+		}
+	}
+	</script>
+</head>
+<body>
+	<h1 id="title">06广告弹窗</h1>
+</body>
+</html>

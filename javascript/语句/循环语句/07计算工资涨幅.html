@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07计算工资涨幅</title>
+	<script>
+		/*
+			小王入职薪水10K，每年涨幅5%，10年后工资多少？
+				* 这10年小王赚了多少钱
+
+			* 知识点
+				* 数字.toFixed(n)
+					* 保留小数点后n位
+					* 四舍五入
+		 */
+		
+		// 入职工资
+		var salary = 10000;
+
+		// 总计
+		// 第一年工资总额
+		var total = salary * 12;
+
+		for(var year=2;year<=10;year++){
+			// salary = salary + salary * 0.05;
+			// salary = salary * 1.05;
+			salary *= 1.05;
+			total += salary*12;
+		}
+
+		document.write('<p>10年后工资老王的工资：' + salary.toFixed(2) + '</p>');
+		document.write('<p>这十年老王赚了：' + total.toFixed(2) + '</p>');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

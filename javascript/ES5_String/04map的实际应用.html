@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>18根据数据生成html结构</title>
+	<style>
+	ul{list-style: none;}
+		img{width:180px;}
+		.price span{color:#f00;}
+		.price span::before{
+			content:'￥';
+		}
+	</style>
+	<script>
+	window.onload = function(){
+		var goodslist = [{
+	        name:'iphone7 plugs',
+	        imgurl:'img/ip7.jpg',
+	        price:5899.00,
+	        sale:5888.00,
+	        color:'土豪金'
+	    },{
+	        name:'Note7',
+	        imgurl:'img/note7.jpg',
+	        price:3899.00,
+	        sale:998.00,
+	        color:'黑色'
+	    },{
+	        name:'荣耀7',
+	        imgurl:'img/honor7.jpg',
+	        price:1999.00,
+	        sale:1899.00,
+	        color:'白色'
+	    }];
+
+
+	    // 获取元素
+	    var datalist = document.getElementById('datalist');
+
+		var html = goodslist.map(function(item){
+
+			return '<li><img src="'+item.imgurl+'"><h4>'+item.name+'</h4><p class="price">价格：<span>'+item.price+'</span></p><p class="color">颜色：'+item.color+'</p></li>'
+		}).join('');
+
+		datalist.innerHTML = html;
+
+		console.log(html);
+	}
+	</script>
+</head>
+<body>
+	<div id="datalist">
+		<!-- <ul>
+			<li>
+				<img src="" alt="">
+				<h4></h4>
+				<p class="price"></p>
+				<p class="color"></p>
+			</li>
+		</ul> -->
+	</div>
+</body>
+</html>

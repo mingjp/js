@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06节点关系</title>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			/*
+				节点关系					元素版本(IE8-不支持)
+				* 父节点
+					parentNode				parentElement
+				* 子节点
+					* firstChild			firstElementChild
+					* lastChild				lastElementChild
+					* childNodes			children
+				* 兄弟节点
+					* previousSibling 		previousElementSibling
+					* nextSibling 			nextElementSibling
+
+
+			 */
+			var datalist = document.getElementById('datalist');
+
+			// 
+			var h1 = datalist.previousElementSibling;
+			var p = datalist.nextElementSibling;
+			console.log(p)
+
+			var all_child = datalist.children;
+			console.log(all_child)
+
+
+		}
+	</script>
+</head>
+<body>
+	<h1>音乐排行耪</h1>
+	<div id="datalist">
+		<h4>华语歌坛TOP3</h4>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<h4>粤语歌坛TOP3</h4>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+	<p>copyright h5_1705</p>
+</body>
+</html>

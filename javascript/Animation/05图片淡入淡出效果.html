@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05图片淡入淡出效果</title>
+	<style>
+		.girl{opacity:0.5;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			/*
+				淡入淡出
+					* 改变opacity属性
+			 */
+			var girl = document.querySelector('.girl');
+
+			// 鼠标移入，透明度改成1
+			girl.onmouseover = ()=>{
+				// 通过getComputedStyle得到的值为字符串
+				let opacity = parseFloat(getComputedStyle(girl).opacity);
+
+				let timer = setInterval(()=>{
+					opacity += 0.05;
+					if(opacity>1){
+						clearInterval(timer);
+						opacity = 1;
+					}
+					girl.style.opacity = opacity;
+				},30);
+			}
+
+			// 鼠标移除，透明图改成0.5
+			girl.onmouseout = ()=>{
+				// 通过getComputedStyle得到的值为字符串
+				let opacity = parseFloat(getComputedStyle(girl).opacity);
+
+				let timer = setInterval(()=>{
+					opacity -= 0.05;
+					if(opacity<0.5){
+						clearInterval(timer);
+						opacity = 0.5;
+					}
+					girl.style.opacity = opacity;
+				},30);
+			}
+		})
+	</script>
+</head>
+<body>
+	<img src="img/zb.jpg" class="girl">
+</body>
+</html>

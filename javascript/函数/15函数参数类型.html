@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15函数参数类型</title>
+	<style>
+		strong{color:#f60;}
+	</style>
+	<script>
+		/*
+			函数作为参数传递的案例
+		 */
+		function showMsg(name,age,gender,showTime){
+			// showTime = laoxieSay;
+			// showTime = function(){}
+			// showTime = '我看起来很年轻'
+			document.write('<p>我叫' + name + ', 今年' + age + '岁，' + gender + '</p>');
+
+			// 确定传进来的参数为function才执行
+			if(typeof showTime === 'function'){
+				showTime();
+			}
+			
+		}
+
+		function laoxieSay(){
+			document.write('<strong>其实我还小</strong>');
+		}
+
+		showMsg('laoxie',18,'男',laoxieSay);
+
+		showMsg('lemon',28,'女',function(){
+			document.write('<strong>其实我不止28</strong>');
+		});
+
+		showMsg('laolan',32,'男','我看起来很年轻');
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

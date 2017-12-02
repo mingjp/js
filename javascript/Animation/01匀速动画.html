@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01匀速动画(飞翔的小鸟)</title>
+	<style>
+		.bird{position:absolute;left:0;top:0;}
+	</style>
+	<script>
+	document.addEventListener("DOMContentLoaded",()=>{
+		/*
+			飞翔的小鸟(匀速运动)
+			原理：不断改变小鸟的left
+		 */
+		
+		let bird = document.querySelector('.bird');
+
+		var speed = 10;
+
+		var timer = setInterval(()=>{
+			// 获取小鸟当前left值
+			var left = bird.offsetLeft;
+
+			if(left >= window.innerWidth - bird.offsetWidth){
+				clearInterval(timer);
+				left = window.innerWidth - bird.offsetWidth - speed;
+			}
+
+			bird.style.left = left + speed + 'px';
+		},30);
+		
+	});
+		
+	</script>
+</head>
+<body>
+	<img src="img/bird.gif" class="bird">
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13手动触发事件</title>
+	<style>
+		.citylist{display:none;border:1px solid #ddd;padding:10px;margin:0;list-style: none;width:200px;}
+		.citylist li{padding:5px 10px;border-bottom:1px dotted #ddd;}
+		.citylist li:last-child{border:none;}
+		.citylist li:hover{background-color: #fc0;}
+	</style>
+	<script src="lib/jquery-3.1.1.js"></script>
+	<script>
+		jQuery(function($){
+			$('#city').on('focus',function(){
+				$('.citylist').slideDown();
+				//100行
+			}).on('blur',function(){
+				$('.citylist').slideUp();
+			}).next().on('click',function(){
+				$('#city').trigger('focus');
+			});
+
+
+			$('.citylist').on('click','li',function(){
+				console.log(666)
+				$('#city').val($(this).text())
+			});
+
+
+		})
+	</script>
+</head>
+<body>
+	<input type="text" id="city"><button>选择城市</button>
+	<ul class="citylist">
+		<li>广州</li>
+		<li>北京</li>
+		<li>上海</li>
+		<li>深圳</li>
+	</ul>
+</body>
+</html>

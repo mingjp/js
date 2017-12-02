@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>17对象</title>
+	<script>
+		/*
+			数据类型
+				* 基本数据类型
+					* Number
+						* NaN
+					* String
+					* Boolean
+				* 特殊数据类型
+					* Undefined
+					* Null
+				* 引用数据类型
+					* Object
+						* Array
+						* Function
+
+
+			对象的格式：
+				{属性名:属性值,属性名2:属性值2}
+		 */
+		
+
+		
+		// 对象创建方式1：字面量
+		var obj = {hobby:['翻车','尬舞','敲代码']};
+
+		// 添加属性
+		// 对象内的属性
+		obj['name'] = 'laoxie';
+		obj['age'] = 18;
+		obj['gender'] = '保密';
+
+		// 同名属性被覆盖
+		obj['hobby'] = true;
+
+		console.log(obj);
+
+		// 对象创建方式2：构造函数
+		var obj2 = new Object();//空对象
+
+		// 点语法
+		obj2.name = 'lemon';
+		obj2['age'] = 28;
+		console.log(obj2);
+
+
+		// 对象的遍历
+		// for..in循环
+		for(var attr in obj){
+			// attr是一个变量
+			// 必须使用方括号语法
+			console.log(attr,obj[attr]);
+
+
+		}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

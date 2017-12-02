@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<style></style>
+		<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			var city=document.querySelector('.city');
+			// 1.先获得省级的数据,根据获得的省级，决定后面的市级
+			// 2.根据后面的市级决定后面的区县
+			var sheng=city.querySelector('.sheng');
+			var shi=city.querySelector('.shi');
+			var qu=city.querySelector('.qu');
+			// 1）先请求json数据，获得所有的省
+			var xhr_sheng=new XMLHttpRequest();
+			xhr_sheng.onload=function(){
+				if(xhr_sheng.status===200||xhr_sheng_status===304){
+					var res=JSON.parse(xhr_sheng.responseText);
+					sheng.innerHTML=res.regions.map(item=>{s
+						return `<option>${item.name}</option>`
+					}).join('');
+				}
+			}
+			xhr_sheng.open('get','../api/data/region.json',true);
+			xhr_sheng.send();
+		})	
+		</script>
+	</head>
+	<body>
+		<div class="city">
+			<h1>全国城市三级联动</h1>
+			<select class="sheng">
+			</select>
+			<select class="shi">
+			</select>
+			<select class="qu">
+			</select>
+			<button></button>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>17return</title>
+	<script>
+		/*
+			return
+				* 终止函数的执行,return后的代码不会执行
+				* return后如果有值，则把这个值返回到函数执行的地方
+					* 如何return后面没有值，则得到undefined
+					* 如果函数没有return,执行完后返回undefined
+		 */
+		
+		function show(num){
+			var a = 10;
+			var b = 20;
+
+			return;
+
+			console.log(a + b);
+			return a*a + b*b;
+
+			console.log(a+b+num);
+		}
+
+		var res = show(20);//500
+		console.log(res);
+
+
+		function sum(){
+			var a = 10;
+			var b = 20;
+		}
+
+		var res2 = sum();//undefined
+		console.log(res2)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Es6的继承方式</title>
+	<script src="../common.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+
+			/*
+				
+			 */
+			/*function Box(){
+
+			}
+
+			Box.prototype.init = function(){
+
+			}
+
+			function MiniBox(){
+				// 继承属性：借用构造函数
+				Box.call(this);
+			}
+
+			// 继承方法：原型式继承
+			MiniBox.prototype = Object.create(Box.prototype);*/
+
+
+			// ES6
+			// 类
+
+			class Box{
+				constructor(width,height,bgColor){
+					// 属性
+					this.width = width;
+					this.height = height;
+					this.bgColor = bgColor;
+				}
+
+				// 方法
+				// 这里添加的方法
+				// * 自动成为原型对象的方法
+				// * 自动设置属性特性
+				init(){
+					var box = document.createElement('div');
+
+					// 设置样式
+					box.style.width = this.width + 'px';
+					box.style.height = this.height + 'px';
+					box.style.backgroundColor = this.bgColor;
+					box.style.position = 'absolute';
+
+					// 写入页面
+					document.body.appendChild(box);
+
+
+					// 可拖拽
+					box.onmousedown = function(e){
+						var ox = e.offsetX;
+						var oy = e.offsetY;
+						document.onmousemove = function(evt){
+							box.style.left = evt.clientX - ox + 'px';
+							box.style.top = evt.clientY - oy + 'px';
+						}
+					}
+
+					document.onmouseup = function(){
+						document.onmousemove = null;
+					}
+
+
+					// 双击移动
+					box.ondblclick = function(){
+						this.move();
+					}.bind(this);
+
+
+					// 传递box
+					this.ele = box;
+
+					return this;
+				}
+
+				// 移动
+				move(){
+					animate(this.ele,{left:600});
+
+					return this;
+				}
+			}
+
+			var b1 = new Box(300,100,'#f00').init();
+
+			console.log(b1);
+
+
+			// 继承方法extends
+			class MiniBox extends Box{
+				constructor(bgColor){
+					// 继承属性
+					super(100,100,bgColor);
+					this.title = '小窗口';
+				}
+			}
+
+			var m1 = new MiniBox('#58bc58').init();
+			console.log(m1);
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

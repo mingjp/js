@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08location</title>
+	<script>
+	window.onload = function(){
+		/*
+			列表页向详情页传递参数
+			location
+			?id=g01&title=..
+		 */
+		var goods = document.getElementById('goods');
+
+		var data = {
+			id:'g01',
+			title:'土豪金版iphone7 plus',
+			price:998,
+			imgrul:'img/g01.jpg'
+		}
+
+		goods.onclick = function(){
+			var params = '';
+			for(var attr in data){
+				params += attr + '=' + data[attr] + '&';
+			}
+
+			// 删除多余的&
+			params = params.slice(0,-1);console.log(params)
+
+			location.href="08location_details.html?" + params;
+		}
+		
+
+	}
+
+
+	</script>
+</head>
+<body>
+	<img src="img/g01.jpg" id="goods">
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通过ip获取天气</title>
+	<script>
+		document.addEventListener("DOMContentLoaded",function(){
+			/*
+				获取天气->城市->ip
+
+				同步与异步
+					
+			 */
+			
+			// 获取ip地址
+			var ip;
+			var city;
+			var weather;
+			var xhr_ip = new XMLHttpRequest();
+			xhr_ip.onload = function(){
+				if(xhr_ip.status === 200 || xhr_ip.status === 304){
+					ip = xhr_ip.responseText;
+
+					console.log(ip);
+				}
+			}
+			xhr_ip.open('get','../api/get_outer_ip.php',false);
+			xhr_ip.send();
+
+			// console.log('end');
+
+
+			// 根据ip获取城市
+			var xhr_city = new XMLHttpRequest();
+			xhr_city.onload = function(){
+				if(xhr_city.status === 200 || xhr_city.status === 304){
+					city = xhr_city.responseText;
+					console.log(city);
+				}
+			}
+			xhr_city.open('get','../api/get_city.php?ip='+ip,false);
+			xhr_city.send();
+
+
+
+			// 根据城市获取天气
+			var xhr_weather = new XMLHttpRequest();
+			xhr_weather.onload = function(){
+				if(xhr_weather.status === 200 || xhr_weather.status === 304){
+					weather = JSON.parse(xhr_weather.responseText);
+					console.log(weather);
+				}
+			}
+			xhr_weather.open('get','http://wthrcdn.etouch.cn/weather_mini?city='+city,false);
+			xhr_weather.send();
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义动画</title>
+    <style>
+        .box{position:relative;width:100px;height:100px;background-color: #f00;}
+        .box2{width:200px;height:50px;background-color: #58bc58;}
+    </style>
+    <script src="lib/jquery-3.1.1.js"></script>
+    <script>
+        /*
+            动画速度
+                * fast:200
+                * normal:400
+                * slow:600
+         */
+        jQuery($=>{
+            $('#go').click(function(){
+                $('.box').animate({width:200,height:200},2000,function(){
+                     $('.box2').animate({opacity:0.5});
+                }).delay(3000).animate({opacity:0.5});
+            });
+
+            $('#btnAdd').click(()=>{
+                $('.box').animate({left:100});
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>自动动画</h1>
+    <button id="go">走你~~</button>
+    <button id="btnAdd">添加动画</button>
+    <div class="box"></div>
+    <div class="box2"></div>
+</body>
+</html>

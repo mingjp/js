@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>14进制</title>
+	<script>
+		/*
+			进制
+				* 二进制
+					101011001
+				* 八进制
+					755，777
+				* 十进制
+					
+				* 16进制
+					ff000,cccccc
+		 */
+		
+		//10进制
+		var num10 = 20;
+
+		// 2进制
+		var num2 = 0b10111011;
+
+		// 8进制
+		var num8 = 0o755;
+
+		// 16进制
+		var num16 = 0xff0000;
+
+
+		// 十进制转其他
+		// toString()
+		var num = 20;
+		// 10转2
+		console.log('10转2：'+num.toString(2));//10100
+		// 10转8
+		console.log('10转8：'+num.toString(8));//24
+		// 10转16
+		console.log('10转16：'+num.toString(16));//14
+
+		// 其他转十进制
+		// parseInt()
+		var x='110';  
+		console.log('2转10：'+ parseInt(x,2));  
+		console.log('8转10：'+ parseInt(x,8));  
+		console.log('16转10：'+ parseInt(x,16));
+
+
+		// 其他转其他
+		// * 其他转10
+		// * 10转其他
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

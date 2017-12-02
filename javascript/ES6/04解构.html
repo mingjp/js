@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04解构</title>
+	<script>
+		// 声明多个变量
+		// var a,b,c;
+		// var a=10,b=20,c=30;
+
+		// 数组解构
+		var [a,b,c,d] = [10,20,30];//与上面声明等效
+		console.log(a,b,c,d);//10,20,30,undefined
+
+
+		// 对象的解构
+		var person = {myname:'laoxie',age:18,gender:'男',young:true,hobby:'尬聊'}
+		// var {name,age,gender,isYoung} = person;
+		// console.log(name,age,gender,isYoung);//laoxie 18 男 undefined
+
+		// 声明的变量为：realName，但解构时使用myname属性
+		var {myname:realName,age} = person;
+		// console.log(realName,age,myname);//undefined 18
+
+
+		// 指定默认值
+		var {hobby='敲代码'} = person;
+		console.log(hobby);
+
+
+		// 交换变量值
+		var x = 10;
+		var y = 100;
+
+		// var temp = x;
+		// x = y;
+		// y = temp;
+
+		var [x,y] = [y,x];
+		console.log(x,y)
+
+
+		// 函数传参
+		// function show(x,y,z){
+		// 	x = x || 1;
+		// 	y = y || 2;
+		// 	z = y || 3;
+
+		// 	console.log(x,y,z);
+		// }
+
+		// show(20,30,40);//20,30,40
+		// show();//1,2,3
+
+		function show({x=1,y=2,z=3}){
+			// var {x=1,y=2,z=3} = undefined;
+			console.log(666)
+			console.log(x,y,z);
+		}
+		show({x:20,y:30,z:40});
+		show({});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04实时显示光标位置</title>
+	<style>
+		.pos{position:absolute;left:0;bottom:0;padding:10px;background-color: rgba(255,255,255,.3);font-size:10px;}
+		.pos p{margin:5px 0;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				event
+					* clientX
+					* clientY
+
+				获取根节点（html）
+					* document.documentElement
+					
+			 */
+			var pos = document.getElementsByClassName('pos')[0];
+			
+			document.onmousemove = function(event){
+				pos.innerHTML = '<p>X：' + event.clientX + ', Y：' + event.clientY + '</p>'
+								+ '<p>screenX:' + event.screenX+',screenY: '+event.screenY+'</p>'
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="pos">dsfasjdlasdf</div>
+</body>
+</html>

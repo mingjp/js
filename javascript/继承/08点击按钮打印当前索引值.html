@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08点击按钮打印当前索引值</title>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			var btn = document.querySelectorAll('button');
+
+			/*for(let i=0;i<btn.length;i++){
+				// btn[i].idx = i;
+				btn[i].onclick = function(){
+					console.log(i);
+					// console.log(this.idx);
+				}
+			}*/
+
+
+
+			// 利用闭包打印按钮的索引值
+			for(var i=0;i<btn.length;i++){
+				btn[i].onclick = (function(i){
+					// 闭包
+					return function(){
+						console.log(i);
+					}
+				})(i);
+			}
+		})
+	</script>
+</head>
+<body>
+	<button>btn1</button>
+	<button>btn2</button>
+	<button>btn3</button>
+	<button>btn4</button>
+	<button>btn5</button>
+</body>
+</html>

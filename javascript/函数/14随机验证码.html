@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>编写生成4位数字验证码的函数，并显示在页面，点击重新生成验证码</title>
+	
+</head>
+<body>
+	<div><label for="username">用户名：</label><input type="text" id="username"></div>
+	<div><label for="password">密码：</label><input type="password" id="password"></div>
+	<div><label for="vcode">验证码：</label><input type="text" id="vcode"><span id="showCode"></span></div>
+	<button id="btnLogin">登录</button>
+
+	<script>
+		var username = document.getElementById("username");
+		var password = document.getElementById("password");
+		var vcode = document.getElementById("vcode");
+		var showCode = document.getElementById("showCode");
+		var btnLogin = document.getElementById("btnLogin");
+
+
+		// 用于存放随机验证码
+		var myCode;
+
+		// 进入页面生成随机验证码
+		function createCode(){
+			var res = parseInt(Math.random()*10000);
+
+			// 如果不够4位
+			if(res<10){
+				res = '000' +  res;
+			}else if(res<100){
+				res = '00' + res;
+			}else if(res<1000){
+				res = '0' + res;
+			}
+
+			myCode = res;
+
+			showCode.innerHTML = res;
+		}
+		createCode();
+
+		// 查看验证码是否输入正确
+		btnLogin.onclick = function(){
+			var _vcode = vcode.value;
+
+			if(_vcode != myCode){
+				alert('验证码输入不正确');
+				createCode();
+			}else{
+				alert('恭喜你，会认字了')
+			}
+		}
+	</script>
+</body>
+</html>

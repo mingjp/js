@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02cookie的读取</title>
+	<script>
+	//读取cookie
+	//一次性读取所有cookie（String）
+	// 'myName=laoxie; myAge=18; test=hello'
+	var cookies = document.cookie;
+	console.log(cookies);
+
+	// 以分号+空格（; ）拆分成数组
+	var arr_cookie = cookies.split('; ');//['myName=laoxie','myAge=18','test=hello']
+
+	arr_cookie.forEach(function(item){
+		// 以等号拆分cookie的name/value
+		var temp = item.split('=');//['myName','laoxie']
+
+		document.write('<p>' + temp[0] + ':' + temp[1] + '</p>');
+
+	});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

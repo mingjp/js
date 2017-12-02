@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>找出所有的水仙花数，三位数，各位立方和等于该数本身</title>
+	<script>
+		/*
+			找出所有的水仙花数，三位数，各位立方和等于该数本身
+				153 = 1^3 + 5^3 + 3^3
+		 */
+		for(var i=100;i<=999;i++){
+			// 个位
+			var g = i%10;
+
+			// 十位
+			var s= parseInt(i/10)%10;
+
+			// 百位
+			var b = parseInt(i/100);
+
+			if(i=== g*g*g + s*s*s + b*b*b){
+				document.write(i + ', ')
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>找出所有的水仙花数</h1>
+</body>
+</html>

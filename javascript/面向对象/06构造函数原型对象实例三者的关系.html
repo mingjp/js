@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06构造函数原型对象实例三者的关系</title>
+	<script>
+		/*
+			1、创建并描述对象
+				* 属性（有什么）
+				* 方法（能做什么）
+			2、操作对象
+		 */
+		// 构造函数
+		function Person(name,age,gender){
+			// 构造函数添加属性
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+
+		}
+
+		// 原型对象
+		// 添加方法
+		Person.prototype.say = function(){
+			console.log(`我叫${this.name},${this.gender},今年${this.age}，欢迎和我交朋友`);
+		}
+		Person.prototype.cry = function(){
+			console.log(`我叫${this.name},${this.gender},今年${this.age}，动不动我就哭！！`);
+		}
+
+		// 实例
+		let p1 = new Person('曹操',43,'男');
+		let p2 = new Person('貂蝉',16,'女');
+		let p3 = new Person('吕布',20,'男');
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

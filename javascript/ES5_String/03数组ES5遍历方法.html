@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03数组ES5遍历方法</title>
+	<script>
+		var arr = [10,20,30,40];
+		
+		// 遍历
+		for(var i=0;i<arr.length;i++){
+			//arr[i].name
+		}
+
+		// 1.forEach()
+		console.log(arr)
+		arr.forEach(function(item,idx,a){
+			// item:数组元素
+			// idx: 索引值
+			// a: 数组的引用
+			console.log(item,idx,a);
+		});
+
+		// 2.map()
+		var res = arr.map(function(item){
+			// map函数执行完毕后得到什么
+			// 取决于在函数中返回什么
+			return item*1.2;
+		});
+		console.log('map:',res);
+
+		// 3.filter()
+		var arr3 = [10,2,8,20,44,22,2,9,31,45,5,88];
+
+		// 获取数组中小于10的数
+		var res3 = arr3.filter(function(item){
+			return item<10;
+		});
+		console.log(res3);
+
+
+		// 了解
+		// every
+		// some
+		var arr4 = [10,12,33,2,8];
+		var res4 = arr4.every(function(item){
+			return item>2;
+		});
+		var res5 = arr4.some(function(item){
+			return item>50;
+		});
+		console.log('every:',res4);
+		console.log('some:',res5);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

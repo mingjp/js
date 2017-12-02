@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise对象</title>
+	<script>
+		var p = new Promise(function(resolve,reject){
+			// reject();//Pending=>Reject()
+			resolve(100)
+		});
+
+		p.then(function(data){
+			console.log('success',data);
+
+			return data*2;
+		},function(){
+			console.log('失败');
+		}).catch(function(){
+			console.log('fail');
+		}).then(function(data){
+			console.log('成功',data);
+			return 'laoxie';
+		}).then(function(data){
+			console.log('很成功',data);
+
+			var p2 = new Promise(function(resolve,reject){
+				setTimeout(function(){
+					resolve('lemon');
+
+				},5000);
+			});
+
+			return p2;
+		}).then(function(data){
+			console.log('非常成功',data);
+		})
+	</script>
+</head>
+<body>
+	<h1>Promise对象</h1>
+</body>
+</html>

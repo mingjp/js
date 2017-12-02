@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12封装一个函数计算任意两个数字的计算</title>
+	
+</head>
+<body>
+	<input type="text" id="num1">
+	<select id="op">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">&times;</option>
+		<option value="/">÷</option>
+		<option value="%">%</option>
+	</select>
+	<input type="text" id="num2">
+	<button id="btn">计算</button>
+	<div id="output"></div>
+
+	<script>
+		// 获取元素
+		var num1 = document.getElementById('num1');
+		var op = document.getElementById('op');
+		var num2 = document.getElementById('num2');
+		var btn = document.getElementById('btn');
+		var output = document.getElementById('output');
+
+
+		// 给#btn绑定事件
+		btn.onclick = function(){
+			// 获取输入的数字
+			var _num1 = num1.value*1;
+			var _num2 = num2.value*1;
+
+			// 获取运算符
+			var _op = op.value;
+
+			// switch
+			var result;
+			if(_op === '+'){
+				result = _num1 + _num2;
+			}else if(_op === '-'){
+				result = _num1 - _num2;
+			}else if(_op === '*'){
+				result = _num1 * _num2;
+			}else if(_op === '/'){
+				result = _num1 / _num2;
+			}else if(_op === '%'){
+				result = _num1 % _num2;
+			}
+
+
+			output.innerHTML = result;
+			
+		}
+	</script>
+</body>
+</html>

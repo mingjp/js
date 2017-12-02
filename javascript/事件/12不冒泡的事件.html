@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12不冒泡的事件</title>
+	<style>
+		body{margin:0;padding:0;overflow: hidden;}
+		#box{width:200px;height:100px;background-color: #f00;position:relative;}
+		#block{position:absolute;top:30px;left:30px;background-color: #fc0;width:50px;height:50px;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				* mouseenter
+				* mouseleave
+			 */
+			var box = document.getElementById('box');
+			var block = document.getElementById('block');
+
+			box.onmouseleave = function(){
+				console.log('box over');
+			}
+
+			block.onmouseleave = function(){
+				console.log('block over');
+			}
+
+			document.body.onmouseleave = function(){
+				console.log('body over')
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div id="block"></div>
+	</div>
+</body>
+</html>

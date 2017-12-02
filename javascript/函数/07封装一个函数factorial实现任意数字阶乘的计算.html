@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装一个函数factorial，实现任意数字阶乘的计算</title>
+	
+</head>
+<body>
+	<h1>封装一个函数factorial，实现任意数字阶乘的计算</h1>
+	<input type="text" id="num"><button id="btn">计算阶乘</button>
+	<div id="output"></div>
+	<script>
+		/*
+			封装一个函数factorial，实现任意数字阶乘的计算
+		 */
+		var num = document.getElementById('num');
+		var btn = document.getElementById('btn');
+		var output = document.getElementById('output');
+
+
+		// 给按钮绑定事件
+		btn.onclick = factorial;
+
+
+		function factorial(){
+			// 获取输入的数字
+			var _num = Number(num.value);//String 
+
+			var total = 1;
+
+			for(var i=2;i<=_num;i++){
+				total *= i;
+			}
+
+			output.innerHTML = _num + '的阶乘为：' + total;
+		}
+
+	</script>
+</body>
+</html>

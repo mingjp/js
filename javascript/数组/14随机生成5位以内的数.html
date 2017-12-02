@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么</title>
+	<script>
+		var number = parseInt(Math.random()*100000);
+
+		/*if(number<10){
+			document.write('随机数为：' + number + ', 共1位，分别为：');
+		}*/
+
+		var number = String(number);//1 2 3
+
+		var res = '';
+		var tips = ["个", "十", "百", "千", "万"];
+		for(var i=number.length-1;i>=0;i--){
+			//i:2	百					1
+			//i:1	十					2			
+			//i:0	个					3
+			res += tips[i] + '位：' + number[number.length-1 - i] + ', ';
+
+		}
+
+		document.write('随机数为：' + number + ', 共'+number.length+'位，分别为：'+res);
+	</script>
+</head>
+<body>
+	<h1>随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么</h1>
+</body>
+</html>

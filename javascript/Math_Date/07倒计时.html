@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07倒计时</title>
+	<script>
+		window.onload = function(){
+			/*
+				倒计时
+				思路：
+					1）不断拿当前时间和结束时间对比，得到时间差
+					2）换算成倒计时格式时间
+					3）到达时间后
+						* 隐藏时间
+						* 显示可购买按钮
+						* 停止定时器
+			 */
+			var time = document.getElementById('time');
+			var btnBuy = document.getElementById('btnBuy');
+
+			// 指定结束时间
+			var end = '2017-8-17 18:11:00';
+			var endTime = Date.parse(end);
+
+
+			var daojishi = setInterval(function(){
+				// 获取当前时间
+				var nowTime = Date.now();
+
+				// 计算时间差
+				// 得到秒数
+				var offset = parseInt((endTime - nowTime)/1000);
+
+				//判断是否结束
+				if(offset<=0){
+					time.style.display = 'none';
+					btnBuy.src = 'img/btn_buy.jpg';
+
+					// 停止定时器
+					clearInterval(daojishi);
+					return;
+				}
+
+				// 50： 0天0分50秒
+				// 62： 0天1分02秒
+
+				// 计算剩余天时分秒
+				var secLeft = offset%60;
+				var minLeft = parseInt(offset/60)%60;
+				var hourLeft = Math.floor(offset/60/60)%24;
+				var dayLeft = Math.floor(offset/60/60/24);
+
+				time.innerHTML = '距' + end + '还剩：' + dayLeft + '天' + hourLeft + '时' + minLeft + '分' + secLeft + '秒';
+
+			},1000);
+
+		}
+	</script>
+</head>
+<body>
+	<h1>商品倒计时</h1>
+	<img src="img/g1.jpg">
+	<div id="time"></div>
+	<img src="img/btn_buy0.jpg" id="btnBuy">
+</body>
+</html>

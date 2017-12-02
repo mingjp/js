@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03节点的操作</title>
+	<style>
+		.even{background-color: #dfdfdf;}
+	</style>
+	<script>
+	window.onload = function(){
+		/*
+			知识点：
+			* 生成一个元素节点
+				document.createElement(元素名)
+			* 插入元素
+				* 父元素.appendChild(子元素)
+				* 父元素.insertBefore(new,node)
+		 */
+			var row = 10;
+			var col = 5;
+
+			// 创建一个元素节点
+			// 创建一个table元素
+			var table = document.createElement('table');
+
+			// 外层循环控制行
+			for(var i=0;i<row;i++){
+				// 创建一个tr元素
+				var tr = document.createElement('tr');
+
+				// 隔行换色
+				if(i%2 === 0){
+					tr.className = 'even';
+				}
+
+				// 内层循环控制列
+				for(var j=0;j<col;j++){
+					// 创建一个td元素
+					var td = document.createElement('td');
+					td.innerHTML = '单元格' + (i+1) + (j+1);
+
+					// 创建一个文本节点
+					// var txt = document.createTextNode('单元格' + (i+1) + (j+1));
+					// td.appendChild(txt);
+
+					// td插入tr
+					tr.appendChild(td);
+				}
+
+				// 如何把tr插入table中
+				table.appendChild(tr);
+			}
+			console.log(table);
+
+			var datalist = document.getElementById('datalist');
+
+			// 在datalist后添加表格
+			// datalist.appendChild(table);
+			// datalist.innerHTML = table;
+
+			// 在h1前面添加table
+			var h4 = datalist.getElementsByTagName('h4')[0];
+			datalist.insertBefore(table,h4);
+	}
+	
+	</script>
+</head>
+<body>
+	<div id="datalist">
+
+		<h4>数据展示</h4>
+	</div>
+</body>
+</html>

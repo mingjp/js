@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09节点的复制</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;overflow:hidden;}
+		.goodslist li{float:left;margin:10px;padding:10px;width:50px;border:1px solid #ddd;}
+	</style>
+	<script>
+	window.onload = function(){
+		/*
+			点击图片复制该图片到后面
+		 */
+		
+		var goodslist = document.getElementsByClassName('goodslist')[0];
+		var lis = goodslist.children;
+
+		for(var i=0;i<lis.length;i++){
+			lis[i].onclick = function(){
+				// cloneNode参数为true才能复制子元素
+				var copyLi = this.cloneNode(true);
+				var nextElement = this.nextElementSibling;
+				this.parentNode.insertBefore(copyLi,nextElement);
+			}
+		}
+		
+
+	}	
+	</script>
+	
+</head>
+<body>
+	<ul class="goodslist">
+		<li><img src="img/small_1.jpg" alt=""></li>
+
+		<li><img src="img/small_2.jpg" alt=""></li>
+		<li><img src="img/small_3.jpg" alt=""></li>
+		<li><img src="img/small_4.jpg" alt=""></li>
+		<li><img src="img/small_5.jpg" alt=""></li>
+		<li><img src="img/small_6.jpg" alt=""></li>
+		<li><img src="img/small_7.jpg" alt=""></li>
+		<li><img src="img/small_8.jpg" alt=""></li>
+		<li><img src="img/small_9.jpg" alt=""></li>
+		<li><img src="img/small_10.jpg" alt=""></li>
+		<li><img src="img/small_11.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

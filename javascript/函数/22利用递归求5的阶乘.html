@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利用递归求5的阶乘</title>
+	<script>
+		/*
+			利用递归求5的阶乘
+			5! = 1*2*3*4*5 => 120
+			5! = 5*4*3*2*1 => 120
+				 5 * 4!
+				 	 4 * 3!
+				 	 	 3 * 2!
+				 	 	 	 2 * 1!
+		 */
+		var total = 1;
+		for(var i=2;i<=5;i++){
+			/*
+				i 		total
+				2		1*2
+				3		1*2*3
+				4		1*2*3*4
+				5		1*2*3*4*5
+			 */
+			total = total * i;
+		}
+
+		function recursion(num){
+
+			// 递归跳出条件
+			if(num<=1){
+				return 1;
+			}
+			
+			return num * recursion(num-1);
+		}
+
+		recursion(5);//120
+		// recursion(1);//1
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

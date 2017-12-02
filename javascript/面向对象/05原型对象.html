@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05原型对象</title>
+	<script>
+		/*
+			* 自定义构造函数
+				* 与普通函数的区别
+					* 执行方式
+				* this：指向实例
+			* 实例：用new生成的对象称为“实例”
+			* 原型对象
+				* 原型对象伴随构造函数而来
+			* 对象属性的查找规则
+				* 先从当前对象本身查找，找到则使用
+				* 如果找不到，则往它的原型对象中查找
+				...
+				* 如果都找不到，则返回undefined
+		 */
+
+
+		// 自定义构造函数：Student
+		function Student(name,age,gender){
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+		}
+
+		// 实例:s2
+		var s2 = new Student('王铁柱',48,'男');
+
+		// 通过构造函数获取原型对象
+		// Student.prototype
+		console.log(Student.prototype)
+
+		// 通过实例获取原型对象
+		// * 浏览器私有属性：__proto__
+		// * ES5：Object.getPrototypeOf(s2)
+		console.log(s2.__proto__);
+		console.log(Object.getPrototypeOf(s2));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

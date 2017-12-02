@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01页面加载时间</title>
+	<script>
+		/*
+			* 延迟代码执行，为的是获取页面上的元素
+			* 避免全局环境污染
+		 */
+		window.onload = function(){
+			console.log('window load');
+		}
+
+		// 替代window.onload的方案：
+		// 1.readystatechange
+		document.onreadystatechange = function(){
+			// * interactive => 4
+			// * complete => 6 window.onload
+			console.log(document.readyState);
+			// console.log(666)
+
+			if(document.readyState === 'interactive'){
+				console.log(document.getElementById('box'));
+			}
+		}
+
+		// 2.DOMContentLoaded（推荐）
+		document.addEventListener('DOMContentLoaded',function(){
+			console.log('DOMContentLoaded');
+		})
+
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

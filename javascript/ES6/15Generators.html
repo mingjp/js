@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Generators</title>
+	<script>
+		/*
+			生成器 Generators
+		 */
+		
+		function sum(){
+			var a = 10;
+			var b = 20;
+			return a+b;
+			var res = a * b;
+			return res;
+		}
+
+		sum();//普通函数的执行，会执行函数内部所有的代码，直到遇见return;
+
+
+		function* gen(step){
+			yield 10;
+		    yield 20;
+		    // return 100;
+		    yield 30;
+		}
+
+		var g = gen();//函数中的代码不会立即执行，而是返回一个生成器对象（暂停）
+		console.log(g)
+
+		console.log(g.next());
+		//return返回值组成的对象{value:xx,done:false}
+
+		// es6=>es5
+		// babel
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

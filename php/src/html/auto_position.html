@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动定位</title>
+	<style>
+		#bdmap{height:600px;}
+	</style>
+	
+</head>
+<body>
+	<h1>Promise</h1>
+	<div id="bdmap"></div>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=x4RLsqK9mFnB0Vf3QiNLvSMAVmuhWqPe"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded",function(){
+
+			/*
+				reject();//调用reject()方法，把promise对象（ip_promise）的状态从Pending改到Rejected
+				resolve();//调用resolve()方法，把promise对象（ip_promise）的状态从Pending改到Resolved
+
+
+				promise应用
+					* ajax嵌套
+			 */
+
+			// Pending
+			// 实例
+			var ip_promise = new Promise(function(resolve,reject){
+				// 获取ip地址
+				var xhr_ip = new XMLHttpRequest();
+				xhr_ip.onload = function(){
+					if(xhr_ip.status === 200 || xhr_ip.status === 304){
+						var ip = xhr_ip.responseText;
+
+						console.log(ip);
+
+						resolve(ip);
+
+					}
+
+					// ajax失败
+					else{
+						// console.log('失败');
+						reject();
+					}
+				}
+				xhr_ip.open('get','../api/get_outer_ip.php',true);
+				xhr_ip.send();
+			});
+
+			console.log(ip_promise);
+
+			// 实例调用then方法
+			ip_promise.then(function(ip){
+
+				var city_promise = new Promise(function(resolve,reject){
+					// 根据ip获取城市
+					var xhr_city = new XMLHttpRequest();
+					xhr_city.onload = function(){
+						if(xhr_city.status === 200 || xhr_city.status === 304){
+							var city = xhr_city.responseText;
+							console.log(city);
+
+							resolve(city);
+							
+						}
+					}
+					xhr_city.open('get','../api/get_city.php?ip='+ip,true);
+					xhr_city.send();
+				});
+
+				// 在then方法中返回promise对象（city_promise），后面的链式调用针对的时city_promise
+				return city_promise;
+
+			},function(){
+				console.log('fail');
+			}).then(function(city){
+
+				console.log('test:',city);
+
+				// 根据城市自动地图定位
+				// 创建Map实例
+				var map = new BMap.Map("bdmap");
+
+				// 显示当前城市，缩放级别
+				map.centerAndZoom(city,15);
+
+				//添加地图类型控件
+				map.addControl(new BMap.MapTypeControl());   
+
+				//开启鼠标滚轮缩放
+				map.enableScrollWheelZoom(true);
+
+				//构造全景控件
+				var stCtrl = new BMap.PanoramaControl();
+				
+				//添加全景控件
+				map.addControl(stCtrl);
+			})
+
+			// promise对象状态改成Rejected时执行（等效于then方法的第二个参数）
+			.catch(function(){
+
+			})
+			
+			
+
+
+			
+
+
+
+			
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05实时显示时间</title>
+	<script>
+	window.onload = function(){
+
+		/*
+			setInterval(fn,duration);
+		 */
+		var time = document.getElementById('time');
+
+		// 页面进入时显示时间
+		showTime();
+
+		// 每隔1s执行一次showTime
+		setInterval(showTime,1000);
+
+		function showTime(){
+			// 获取当前时间
+			var now = new Date();
+
+			// 年月日
+			var year = now.getFullYear();
+			var month = now.getMonth()+1;
+			var date = now.getDate();
+
+			// 时分秒
+			var hour = now.getHours();
+			var min = now.getMinutes();
+			var sec = now.getSeconds();
+
+			// 补0操作
+			month = month<10 ? '0'+month : month;
+			date = date<10 ? '0'+date : date;
+			hour = hour<10 ? '0'+hour : hour;
+			min = min<10 ? '0'+min : min;
+			sec = sec<10 ? '0'+sec : sec;
+
+			// 时间写入页面
+			time.innerHTML = year + '年' + month + '月' + date + '日 ' + hour + ':' + min + ':' + sec;
+		}
+	}
+	
+	</script>
+</head>
+<body>
+	<h1>实时显示时间</h1>
+	<div id="time"></div>
+</body>
+</html>

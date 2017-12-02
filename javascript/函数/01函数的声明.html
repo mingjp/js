@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01函数的声明</title>
+	<script>
+	/*
+		* 函数创建方式:
+			* 声明式
+			* 赋值式
+			* 构造函数（了解）
+		* 匿名函数
+			没有名字的函数
+		* 函数的执行方式
+			* 手动执行 
+			* 事件驱动
+	 */
+		// 格式：function 函数名(){}
+		// 浏览器在编译代码时，会把函数保存到内存中
+
+		// 声明方式1：声明式
+		function sum(){
+			var a = 10;
+			var b = 20;
+			var res = a + b;
+			console.log(res);
+		}
+
+		// 函数执行方式一：手动执行
+		sum();
+
+
+		// 函数声明方式2：赋值式
+		var sum = function(){}
+
+
+		// 函数声明方式3：构造函数（了解）
+		// var sum = new Function("console.log(66);");
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05字符串扩展</title>
+	<script>
+	document.addEventListener('DOMContentLoaded',function(){
+		var datalist = document.querySelector('.datalist');
+		var data = [
+			{
+				guid:1,
+				name:'李白',
+				age:18,
+				poem:'床前明月光'
+			},
+			{
+				guid:2,
+				name:'杜甫',
+				age:19,
+				poem:'杜甫很忙'
+			},
+			{
+				guid:3,
+				name:'lemon',
+				age:19,
+				poem:'言多必失'
+			}
+		];
+
+		var ul = document.createElement('ul');
+
+		ul.innerHTML = data.map(function(item){
+			/*return '<li data-guid="'+item.guid+'">'
+				+'<h4>'+item.name+'</h4>'
+				+'<p>'+item.age+'</p>'
+				+'<p>'+item.poem+'</p>'
+			+'</li>';*/
+
+
+			// ES6的字符串模板
+			return `<li data-guid="${item.guid}">
+				<h4>${item.name}</h4>
+				<p>${item.age}</p>
+				<p>${item.poem}</p>
+			</li>`;
+
+		}).join('');
+
+		datalist.appendChild(ul);
+		
+	})
+	</script>
+</head>
+<body>
+	<div class="datalist"></div>
+</body>
+</html>

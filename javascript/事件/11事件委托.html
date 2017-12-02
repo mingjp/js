@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11利用事件委托复制元素</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;overflow:hidden;}
+		.goodslist li{float:left;margin:10px;padding:10px;width:50px;border:1px solid #ddd;}
+	</style>
+	<script>
+	window.onload = function(){
+		/*
+			点击图片复制该图片到后面
+			* 事件源对象
+				* e.target
+				* e.srcElement
+		 */
+		
+		var goodslist = document.getElementsByClassName('goodslist')[0];
+		var lis = goodslist.children;
+
+		// 数量：绑定11个事件
+		// for(var i=0;i<lis.length;i++){
+		// 	lis[i].onclick = function(){
+		// 		// cloneNode参数为true才能复制子元素
+		// 		var copyLi = this.cloneNode(true);
+		// 		var nextElement = this.nextElementSibling;
+		// 		this.parentNode.insertBefore(copyLi,nextElement);
+		// 	}
+		// }
+
+		// 解决方案:事件委托，把事件绑定到父级元素（ul）
+		// 原理：事件委托利用事件冒泡的原理,把原本绑定给li的事件，委托给父级（ul）去处理
+		// 数量：绑定1个事件
+		goodslist.onclick = function(e){
+			e = e || window.event;
+
+			// 事件源对象的兼容写法
+			var target = e.target || e.srcElement;
+
+			// 判断事件源对象（节点）是否是图片
+			if(target.nodeName.toLowerCase() === 'img'){
+				// e.target就是图片
+				var currentLi = target.parentNode;
+				var copyLi = currentLi.cloneNode(true);
+				currentLi.parentNode.insertBefore(copyLi,currentLi.nextElementSibling);
+			}
+		}
+
+
+	}	
+	</script>
+	
+</head>
+<body>
+	<ul class="goodslist">
+		<li><img src="img/small_1.jpg" alt=""></li>
+		<li><img src="img/small_2.jpg" alt=""></li>
+		<li><img src="img/small_3.jpg" alt=""></li>
+		<li><img src="img/small_4.jpg" alt=""></li>
+		<li><img src="img/small_5.jpg" alt=""></li>
+		<li><img src="img/small_6.jpg" alt=""></li>
+		<li><img src="img/small_7.jpg" alt=""></li>
+		<li><img src="img/small_8.jpg" alt=""></li>
+		<li><img src="img/small_9.jpg" alt=""></li>
+		<li><img src="img/small_10.jpg" alt=""></li>
+		<li><img src="img/small_11.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输出所有1-100之间7的倍数和包含7的数字</title>
+	<script>
+		/*
+			https://www.baidu.com/s?name=avery&age=20&sex=male, 取出name, age和sex的值，并组成对象
+			目的：{name:'laoxie',age:20,sex:'male'}
+
+			思路：
+				1）截取?后的字符
+				2）以&拆分成数组
+				3）遍历数组，再以=拆分数组
+		 */
+		var url = 'https://www.baidu.com/s?name=laoxie&age=20&sex=male';
+
+		// 1）截取?后的字符
+		var idx = url.indexOf('?');//
+		var params = url.substring(idx+1);//'name=laoxie&age=20&sex=male'
+
+		// 2）以&拆分成数组
+		params = params.split('&');//['name=laoxie','age=20','sex=male']
+
+		// 3）遍历数组
+		var res = {};
+
+		params.forEach(function(item){
+			// 再以=拆分数组
+			var arr = item.split('=');//['name','laoxie']
+			console.log(arr)
+			// 写入对象
+			res[arr[0]] = arr[1];
+		});
+
+		console.log(res);
+
+	</script>
+</head>
+<body>
+</body>
+</html>

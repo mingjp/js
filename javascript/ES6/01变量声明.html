@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01变量声明</title>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				知识点：
+					* let 
+					* 块级作用域：花括号内为块级作用域
+					* let不允许相同作用域内多次声明同一变量
+			 */
+			var num1 = 100;
+
+			console.log(res1);//声明提前：undefined
+
+			if(num1>10){
+				var res1 = num1 + 10;
+			}
+
+			console.log(res1);//条件符合：110
+
+			// var同名变量，回覆盖
+			var num1 = 1;
+
+			console.log('-----------es6华丽分割线---------------');
+
+			// console.log(num2);//报错：let声明不提前
+
+			// ES6
+			let num2 = 200;
+
+			if(num2>20){
+				let res2 = num2 + 10;
+				// console.log(res2);
+			}
+
+			// console.log(res2);//报错：let声明的变量为块级作用域
+
+			let num2 = 2;
+		})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

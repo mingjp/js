@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09作用域</title>
+	<script>
+		/*
+			作用域:
+			变量使用范围
+				* 全局作用域
+					* a所在的作用域
+					* 全局变量
+				* 局部作用域
+					* b所在的作用域
+					* 局部变量
+
+			变量的访问规则（重点）
+				* 就近原则
+					* 先从当前函数查找,找到则使用
+					* 如果当前函数没有，则向上一层查找，找到则使用
+					* 如何还是找不到，继续往上一层查找....依此类推
+					* 直到最顶层（window），如果在window中还是无法找到，则报xx is not defined
+				
+		 */
+		// 在函数外声明一个变量
+		var a = 10;
+
+		function add(){
+			var b = 20;
+			console.log('函数内：' + a);
+			console.log('函数内：' + b);
+		}
+
+		function div(){
+			var c = 30;
+			console.log(a + c);
+			// console.log(b);//报错
+		}
+
+		add();
+		console.log('外部：' + a);
+		// console.log('外部：' + b);//报错
+
+
+		// 全局变量
+		var num = 10;
+
+		function sum(){
+			// 局部变量
+			var num1 = 20;
+
+			function sub(){
+				var num1 = 30;
+				var res = num + num1 + num2;
+				console.log(res);
+			}
+
+			sub();
+		}
+
+		sum();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

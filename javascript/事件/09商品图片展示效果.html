@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09商品图片展示效果</title>
+	<style>
+		ul{padding:0;margin:0;list-style: none;}
+		.goods{width:420px;border:1px solid #ddd;padding:10px;}
+		.goods > img{width:420px;}
+		.goods ul{overflow: hidden;}
+		.goods li{float:left;margin-top:8px;margin-right:8px;width:50px;height:50px;padding:5px;border:1px solid #ddd;}
+		.goods li:hover{border-color:#f60;}
+		.goods li.active{border:2px solid #f60;padding:4px;}
+
+	</style>
+	<script>
+		window.onload = function(){
+			var bigImg = document.getElementById('big');
+			var goods = bigImg.parentNode;
+
+			var lis = goods.getElementsByTagName('li');
+
+			lis[0].className = 'active';
+
+			// 遍历lis，给每个li绑定点击事件
+			for(var i=0;i<lis.length;i++){
+				lis[i].onclick = function(){
+					// 先去掉所有高亮
+					for(var i=0;i<lis.length;i++){
+						lis[i].className = '';
+					}
+
+					// 添加高亮
+					this.className = 'active';
+
+					var smallImg = this.children[0];
+					// 把大图的url改成小图的url
+					// 替换图片名字
+					bigImg.src = smallImg.src.replace('small','big');
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="goods">
+		<img src="img/big_1.jpg" id="big">
+		<ul>
+			<li><img src="img/small_1.jpg"></li>
+			<li><img src="img/small_2.jpg"></li>
+			<li><img src="img/small_3.jpg"></li>
+			<li><img src="img/small_4.jpg"></li>
+			<li><img src="img/small_5.jpg"></li>
+			<li><img src="img/small_6.jpg"></li>
+			<li><img src="img/small_7.jpg"></li>
+			<li><img src="img/small_8.jpg"></li>
+			<li><img src="img/small_9.jpg"></li>
+			<li><img src="img/small_10.jpg"></li>
+			<li><img src="img/small_11.jpg"></li>
+		</ul>
+	</div>
+</body>
+</html>

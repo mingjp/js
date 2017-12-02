@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分页获取数据</title>
+	<style>
+		body{padding:50px;}
+		ul{list-style: none;padding:0;margin:0;}/*reset*/
+		#datalist{border:1px solid #ddd;padding:15px;}
+		#datalist li{padding:15px 5px;border-bottom:1px dotted #ccc;}
+		#datalist li h4{margin:0;}
+		#page span{display:inline-block;margin:5px;width:40px;line-height:1.8;text-align: center;background-color:#dfdfdf;color:#666;}
+		#page span.active{background-color:#fc0;color:#fff;}
+	</style>
+	<script>
+	document.addEventListener('DOMContentLoaded',function(){
+		var datalist = document.querySelector('#datalist');
+		var btnLoadmore = document.querySelector('.btn-loadmore');
+
+
+		// 当前分页
+		var pageNo = 1;
+
+		// 每页显示数量
+		var qty = 10;
+
+		var pageLen;
+
+		// 上一次加载的分页
+		var lastPage = 1;
+
+		// 获取数据
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)){
+				var res = JSON.parse(xhr.responseText);
+				// var res = eval('(' + xhr.responseText + ')');
+
+				console.log(res);
+
+				var ul = document.createElement('ul');
+				ul.innerHTML = res.data.map(item=>{
+					return `<li>
+						<h4>${item.name}</h4>
+						<div.content>${item.content}</div>
+					</li>`
+				}).join('');
+
+				datalist.appendChild(ul);
+
+				pageLen = Math.ceil(res.total/res.qty);
+
+				// 分页+1
+				pageNo++;
+			}
+		}
+		// xhr.open('get','../api/data/football.json',true);
+
+		// get请求
+		// xhr.open('get','../api/football.php?pageNo='+pageNo + '&qty='+qty,true);
+		// xhr.send()
+
+		// post请求
+		xhr.open('post','http://localhost/1705/api/football.php',true);
+
+		xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+		// post请求的数据写到send方法中
+		// 'pageNo=1&qty=10'
+		xhr.send('pageNo='+pageNo + '&qty='+qty);
+
+
+		// 滚动加载更多
+		// 思路：滚动到底部时，分页+1
+		window.onscroll = function(){
+			var scrollTop = window.scrollY;//一直在变
+
+			// 如何判断滚动到底部
+			if(scrollTop >= document.documentElement.scrollHeight - window.innerHeight-100 && lastPage != pageNo){
+				console.log(pageNo);
+
+				if(pageNo > pageLen){
+					// pageNo = pageLen;
+					return;
+				}
+
+				xhr.open('post','../api/football.php',true);
+
+				xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+
+				// post请求的数据写到send方法中
+				// 'pageNo=1&qty=10'
+				xhr.send('pageNo='+pageNo + '&qty='+qty);
+
+				lastPage = pageNo;
+			}
+
+		}
+
+
+	});
+		
+	</script>
+</head>
+<body>
+	<h1>世界杯足球解说</h1>
+	<div id="datalist">
+	</div>
+</body>
+</html>

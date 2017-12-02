@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>五星评分</title>
+    <style type="text/css">
+    #star {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        width: 300px;
+        height: 28px;
+    }
+    
+    #star li {
+        float: left;
+        background: url(img/star.gif) no-repeat 0 0;
+        width: 27px;
+        height: 28px;
+    }
+    
+    #star .active{background-position:0 -29px;}
+    
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            var star = document.querySelector('#star');
+            var item = star.children;
+            var len = item.length;
+
+            var score = 1;
+            star.onmouseover = e=>{
+                if(e.target.tagName.toLowerCase()==='li'){
+                    var index = 0;
+                    // 获取target所在的索引值
+                    for(var i=0;i<len;i++){
+                        if(item[i] === e.target){
+                            index = i;
+                        }
+                    }
+
+                    // 再次遍历
+                    // 小于等于index的加高亮
+                    // 大于index的去除高亮
+                    for(var i=0;i<len;i++){
+                        if(i<=index){
+                            item[i].className = 'active';
+                        }else{
+                            item[i].className = '';
+                        }
+                    }
+                }
+            }
+
+            // 鼠标移开
+            // 大于等于scroe的li去除高亮
+            star.onmouseout = e=>{
+                if(e.target.tagName.toLowerCase()==='li'){
+                    for(var i=0;i<len;i++){
+                        if(i>=score){
+                            item[i].className = '';
+                        }
+                    }
+                    
+                }
+            }
+
+
+            // 点击评分
+            // 点击时设定分数值
+            star.onclick = e=>{
+                if(e.target.tagName.toLowerCase()==='li'){
+                    for(var i=0;i<len;i++){
+                        if(item[i] === e.target){
+                            score = i+1;
+                        }
+                    }
+                   
+                }
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <ul id="star">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div id="info"></div>
+</body>
+
+</html>

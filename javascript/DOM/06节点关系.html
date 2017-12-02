@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06节点关系</title>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			/*
+				节点关系
+				* 父节点
+					parentNode
+				* 子节点
+					* firstChild
+					* lastChild
+					* childNodes
+				* 兄弟节点
+					* previousSibling
+					* nextSibling
+			 */
+			var datalist = document.getElementById('datalist');
+
+			// 父节点
+			console.log('父节点: ',datalist.parentNode)
+
+			// 子节点
+			// 会把文本节点（包括换行）计算进去
+			var h4 = datalist.firstChild;
+			var all_child = datalist.childNodes;
+			console.log(all_child.length);
+			console.log('H4:',h4)
+
+			var res = getElement(all_child);//[h4,ul,h4,ul]
+			console.log(res);
+
+			firstElementChild(datalist);//h4
+
+
+			// 兄弟节点
+			console.log(datalist.nextSibling);
+
+
+		}
+	</script>
+</head>
+<body>
+	<h1>音乐排行耪</h1>
+	<div id="datalist">
+		<h4>华语歌坛TOP3</h4>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<h4>粤语歌坛TOP3</h4>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+	<p>copyright h5_1705</p>
+</body>
+</html>

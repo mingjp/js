@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02jquery选择器</title>
+	<script src="lib/jquery-3.1.1.js"></script>
+	<script src="lib/xjquery.js"></script>
+	<script>
+		// 简介写法
+		$(function(){
+			$('.datalist');
+		});
+
+		// 安全写法
+		jQuery(function(){
+			jQuery('.datalist')
+		});
+
+
+		// 安全写法（复杂）
+		(function($){
+			$(function(){
+				$('.datalist');
+			})
+		})(jQuery);
+
+		// 最终安全写法
+		jQuery(function($){
+			// 格式：$('选择器')
+			$('.datalist')
+		});
+	</script>
+</head>
+<body>
+	<div class="datalist">
+		<ul>
+			<li>data1</li>
+			<li>data2</li>
+			<li>data3</li>
+			<li>data4</li>
+			<li>data5</li>
+		</ul>
+	</div>
+</body>
+</html>

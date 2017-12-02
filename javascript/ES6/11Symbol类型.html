@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11Symbol类型</title>
+	<script>
+	document.addEventListener('DOMContentLoaded',function(){
+		/*
+			知识点：
+				* Symbol()
+				* Symbol.for();
+		 */
+		//创建Symbol值
+		//独一无二的值，所以创建的两个值不可能相等
+		var s1 = Symbol();
+		var s2 = Symbol();
+
+		// 创建私有属性
+		var realAge = Symbol();
+		var person = {
+			name:'lemon',
+			age:28,
+			gender:'男',
+			[realAge]:27
+		}
+
+		// 只有拿到Symbol对应的变量才可以修改它的值
+		person[realAge] = 666;
+
+		console.log(person)
+
+
+
+		// Symbol.for()
+		// 创建Symbol值，并登记为lx
+		// 先查找是否已经存在lx这个Symbol值：
+		// 	* 有：返回Symbol值
+		// 	* 没有：创建一个Symbol值
+		var s3 = Symbol.for('lx');
+		var s4 = Symbol.for('lx');
+
+		console.log(s3 === s4);
+
+		///console.log(Symbol.keyFor(s3));
+		
+	})
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

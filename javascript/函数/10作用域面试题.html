@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10作用域面试题</title>
+	<script>
+	/*
+		* 变量查找规则
+		* 声明提前
+			* 提前到当前所在作用域
+		* 顺序执行
+	 */
+		var a = 10;
+		function show(){
+			// var b;
+			// var a;
+			var b = 20;
+			console.log(a + b);//NaN
+
+			var a = 30;
+
+			console.log(a + b);//50
+		}
+
+		show();//30,50,=> 30||50
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

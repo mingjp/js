@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12map类型</title>
+	<script>
+	document.addEventListener('DOMContentLoaded',()=>{
+		/*
+			知识点
+				* Set ：类似于数组
+				* 自动去重
+		 */
+		
+		// 创建Set类型
+		let mySet = new Set();
+		mySet.add(10);
+		mySet.add(20);
+		mySet.add(30);
+		mySet.add(20);
+		mySet.add('10');
+		mySet.add(30);
+		mySet.add(40);
+
+		var arr = [10,20,30,20,10,30,40];
+
+		console.log(arr,mySet);
+
+
+		// 遍历set
+		// for..of
+		for(var val of mySet){
+			console.log(val);
+		}
+
+	})
+	
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

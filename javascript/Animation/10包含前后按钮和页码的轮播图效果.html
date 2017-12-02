@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08垂直轮播图效果</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		.carousel{position:relative;width:810px;height:320px;margin:0 auto;border:2px solid #f00;overflow: hidden;}
+		.carousel ul{position:absolute;top:0;left:0;}
+		.carousel img{display: block;}
+
+		.carousel .page{position: absolute;left:50%;bottom:10px;transform: translate(-50%,0);}
+		.carousel .page span{display: inline-block;margin:0 8px;width:22px;height:22px;text-align:center;line-height: 22px;background-color: #dfdfdf;border-radius: 50%;color:#666;}
+		.carousel .page span.active{background-color: #fc0;}
+
+		.carousel > span{position: absolute;top:50%;left:10px;transform:translate(0,-50%);width:30px;height:60px;line-height:60px;text-align:center;background-color: rgba(0,0,0,.3);color:#333;}
+		.carousel .btn-next{left:auto;right:10px;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				图片轮播
+				不断改变ul的top值：
+				index		current_top 		target		speed
+				0			0					-320		-32,-20,-10,-5,-1,-0.4,0
+				1			-320				-640		-10
+				2			-640				-960		-10
+				3			-960				0			+10
+
+				推导公式：top = -index * 320
+
+				* offsetHeight:自边框之内的高度（包含边框）
+				
+				需要添加的效果
+					* 前后按钮
+					* 页码
+			 */
+			let carousel = document.querySelector('.carousel');
+			let ul = carousel.firstElementChild;
+
+			// 图片的数量
+			let length = ul.children.length;
+
+			// 图片的高度
+			let imgHeight = carousel.clientHeight;
+
+			// 初始索引值（默认显示第一张图片）
+			let index = 0;
+
+			let timer;
+
+			let outerTimer = setInterval(autoPlay,3000);
+
+			// 添加页码
+			let page = document.createElement('div');
+			page.className = 'page';
+			for(var i=0;i<length;i++){
+				let span = document.createElement('span');
+				span.innerHTML = i+1;
+				if(i===index){
+					span.className = 'active';
+				}
+				page.appendChild(span);
+			}
+			carousel.appendChild(page);
+
+			// 点击页码切换
+			page.onclick = e=>{
+				if(e.target.tagName.toLowerCase() === 'span'){
+					// 点击是改变index
+					index = e.target.innerText-1;
+
+					showImg();
+				}
+			}
+
+			// 添加前后按钮
+			let btnNext = document.createElement('span');
+			btnNext.className = 'btn-next';
+			btnNext.innerHTML = '&gt;'
+			let btnPrev = document.createElement('span');
+			btnPrev.className = 'btn-prev';
+			btnPrev.innerHTML = '&lt;';
+			carousel.appendChild(btnNext);
+			carousel.appendChild(btnPrev);
+
+
+			// 鼠标移入移除
+			carousel.onmouseenter = function(){
+				clearInterval(outerTimer);
+			}
+
+			carousel.onmouseleave = ()=>{
+				outerTimer = setInterval(autoPlay,3000);
+			}
+
+			// 前后按钮
+			carousel.onclick = e=>{
+				let className = e.target.className
+				if(className === 'btn-next'){
+					index++;
+					showImg();
+				}else if(className === 'btn-prev'){
+					index--;
+					showImg();
+				}
+			}
+
+			function autoPlay(){
+				index++;
+
+				showImg();
+			}
+
+			function showImg(){
+				if(index>=length){
+					index = 0;
+				}else if(index<0){
+					index = length - 1;
+				}
+
+				// 每张图片滚动到的终点
+				let target = -index*imgHeight;
+
+				clearInterval(timer);
+				timer = setInterval(()=>{
+					// 获取ul当前top值
+					let top = ul.offsetTop;
+
+					// 计算滚动速度（缓冲运动）
+					let speed = (target - top)/10;
+
+					//-0.5=>-1,0.5=>1
+					//目的是不让速度（正负）为0
+					speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
+
+					// 把当前值跟目标值进行对比
+					// 如果当前值等于目标值，则说明图片滚动到终点
+					if(top===target){
+						clearInterval(timer);
+						top = target - speed;
+					}
+
+					ul.style.top = top + speed + 'px';
+				},30);
+
+
+				// 分页高亮
+				// 去除之前的高亮
+				for(let i=0;i<length;i++){
+					page.children[i].className = '';
+				}
+				page.children[index].className = 'active';
+			}
+		})
+	</script>
+</head>
+<body>
+	<div class="carousel">
+		<ul>
+			<li><img src="img/001.jpg"></li>
+			<li><img src="img/002.jpg"></li>
+			<li><img src="img/003.jpg"></li>
+			<li><img src="img/004.jpg"></li>
+		</ul>
+	</div>
+</body>
+</html>

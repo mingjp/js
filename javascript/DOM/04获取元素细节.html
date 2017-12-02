@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04获取元素细节</title>
+	<script>
+		window.onload = function(){
+			/*
+				获取元素细节
+				* getElementById():id不存在则得到null
+				* getElementsByTagName():标签名不存在则得到[]
+				* 循环中i值的变化
+			 */
+			var datalist = document.getElementById('datalist');
+
+			console.log(datalist);
+
+			var h4 = datalist.getElementsByTagName('h4');
+			console.log(h4);
+
+			// 给h4绑定事件
+			for(var i=0;i<h4.length;i++){
+				h4[i].onclick = function(){
+					console.log(this)
+					// console.log(i);
+					// h4[i].style.color = '#f00';
+					this.style.color = '#f00';
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="datalist">
+		<h4>华语歌坛TOP3</h4>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<h4>粤语歌坛TOP3</h4>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
+</body>
+</html>

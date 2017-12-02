@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05类名操作</title>
+	<style>
+		.box{width:100px;height:100px;background-color: #ddd;}
+		.active{background-color: #fc0}
+		.hide{display:none;}
+	</style>
+	<script>
+		document.addEventListener("DOMContentLoaded",function(){
+			var box = document.querySelector('.box');
+			var btn = document.querySelector('#btn');
+
+			// 鼠标移入添加一个active
+			box.onmouseover = function(){
+				this.classList.add('active');
+			}
+
+			box.onmouseout = function(){
+				this.classList.remove('active');
+			}
+
+			btn.onclick = function(){
+				// if(box.classList.contains('hide')){
+				// 	box.classList.remove('hide')
+				// }else{
+				// 	box.classList.add('hide');
+				// }
+
+				box.classList.toggle('hide');
+			}
+		})
+	</script>
+</head>
+<body>
+	<div class="box content mamashuo yu"></div>
+	<button id="btn">显示隐藏</button>
+</body>
+</html>

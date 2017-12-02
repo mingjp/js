@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>21函数递归</title>
+	<script>
+		/*
+			递归:在函数内调用自己
+				* 避免死循环
+				* 有条件地return
+		 */
+		
+		function show(num){
+			console.log('start');
+
+			num--;
+			if(num<1){
+				return;
+			}
+
+			show(num);
+
+			console.log('end');
+		}
+
+		show(10);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

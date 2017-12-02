@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动应答机器人</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		.msg-list{width:600px;margin:0 auto;}
+		.msg-list ul{padding:10px;min-height:200px;overflow:hidden;border:1px solid #ddd;}
+		.msg-list li{float:left;clear:both;margin:10px 0;padding:5px;line-height:2;border-radius:5px;background-color:#efefef;}
+		.msg-list li.active{float:right;background-color:#fc0;color:#fff;}
+		.msg-list textarea{display:block;min-height:50px;margin:10px 0;width:100%;box-sizing: border-box;}
+	</style>
+	<script>
+		window.onload = function(){
+			// 1.获取元素节点
+			var autoApply = document.getElementById('autoApply');
+			var msglist = autoApply.getElementsByTagName('ul')[0];
+			var msg = autoApply.getElementsByTagName('textarea')[0];
+			var btn = autoApply.getElementsByTagName('button')[0];
+
+			var q = '你好,在吗,约吗,开黑吗'.split(',');
+			var a = '他好我也好,必须在,叔叔在哪约,来啊'.split(',');
+
+			// 2.点击按钮发送信息
+			btn.onclick = function(){
+				// 3.获取输入的内容，并创建一个li标签
+				var _msg = msg.value.trim();
+				var li = document.createElement('li');
+				// var txt = document.createTextNode(_msg);
+				// li.appendChild(txt);
+				li.innerHTML = _msg;
+				li.className = 'active';
+
+				// 把li写入ul
+				msglist.appendChild(li);
+
+				msg.value = '';
+				msg.focus();
+
+
+				// 4.判断输入的内容是否存在对应的回答
+				var idx = q.indexOf(_msg);
+				var a_li = document.createElement('li');
+				if(idx>=0){
+					a_li.innerHTML = a[idx];
+				}else{
+					a_li.innerHTML = '你说什么，风太大我听不到';
+				}
+
+				// 延迟1s应答
+				setTimeout(function(){
+					msglist.appendChild(a_li);
+				},1000)
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="autoApply" class="msg-list">
+		<ul>
+		</ul>
+		<textarea></textarea>
+		<button>提交</button>
+	</div>
+
+	<h1>自动应答机器人</h1>
+    <div class="content">
+        <h4>要求：</h4>
+        <ol>
+            <li>点击按钮发送信息</li>
+            <li>ctrl+回车发送消息</li>
+            <li>根据输入的信息，机器人延迟1秒做出响应回答
+				响应消息如下：
+				<p>你好 ==> 他好我也好</p>
+				<p>在吗 ==> 心若在梦就在</p>
+				<p>约吗 ==> 不闲聊，直接约</p>
+				<p>10年的感情说没就没 ==> 十年之前，我不认识你，你也不属于我，所以，别跟我谈感情，太伤钱</p>
+				<p>其他任意消息 ==> 你说什么？风太大，我听不见~~</p>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

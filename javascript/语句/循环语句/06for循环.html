@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06for循环</title>
+	<script>
+		/*
+			* 变量初始化
+			* 条件
+			* 变量更新
+			
+			格式：
+
+			for(变量初始化;条件;变量更新){
+		
+			}
+
+
+			for循环的执行过程：
+			1.变量初始化
+			2.条件判断
+			3.执行for循环中的代码
+			4.变量更新
+		 */
+		
+		// 打印100以内所有偶数的和
+		var total = 0;//2,6,12
+
+		for(var num=0;num<=100;num++){
+			if(num%2===0){
+				console.log('num=' + num + ': ' + total);
+				total = total + num;
+
+			}
+		}
+
+		console.log('结果：' + total);
+
+		// 变量初始化
+		var num=0;
+		for(;num<=100;){
+
+			// 变量更新
+			num++
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

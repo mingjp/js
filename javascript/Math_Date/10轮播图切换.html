@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10轮播图切换</title>
+	<script>
+		window.onload = function(){
+			var lemon = document.getElementById('lemon');
+
+			// 默认显示第一张
+			var idx = 1;
+
+			// 每隔2s切换一张图片
+			var timer = setInterval(showGril,2000);
+
+
+			// 鼠标移入暂停
+			lemon.onmouseover = function(){
+				clearInterval(timer);
+			}
+
+			// 鼠标移除重新开启定时器
+			lemon.onmouseout = function(){
+				// 每隔2s切换一张图片
+				timer = setInterval(showGril,2000);
+			}
+
+			function showGril(){
+				idx++;
+
+				// 当图片到最后一张时
+				if(idx > 5){
+					idx = 1;
+				}
+				lemon.src = 'img/g'+idx+'.jpg';
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="lbt">
+		<img src="img/g1.jpg" id="lemon">
+	</div>
+	<button>上一张</button>
+	<button>下一张</button>
+</body>
+</html>

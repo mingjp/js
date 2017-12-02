@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02吸顶菜单</title>
+	<style>
+		body{margin:0;}
+		header{height:60px;padding:15px;background-color: #58bc58;}
+		.container{height:1600px;background-color: #efefef;}
+		footer{height:60px;background-color: #ccc;}
+		.fixed{position:fixed;top:0;left:0;right:0;}
+		.toolbar{height:100px;background: #fc0;}
+	</style>
+	<script>
+		/*
+			* 元素.className：改变元素的class属性
+		 */
+		window.onload = function(){
+			var search = document.getElementById('search');
+			var container = document.getElementById('container');
+
+			//滚动窗口滚动条时触发
+			window.onscroll = function(){
+				if(window.scrollY>=100){
+					// 添加class属性为fixed
+					search.className = 'fixed';
+					container.style.marginTop = '60px';
+				}else{
+					// 清空class属性
+					search.className = '';
+					container.style.marginTop = 0;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="toolbar"></div>
+	<header id="search">
+		<input type="search"><button>搜索</button>
+	</header>
+	<div class="container" id="container">
+		abcd
+	</div>
+	<footer></footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08垂直轮播图效果</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		.carousel{position:relative;width:810px;height:320px;margin:0 auto;border:2px solid #f00;overflow: hidden;}
+		.carousel ul{position:absolute;top:0;left:0;}
+		.carousel img{display: block;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				图片轮播
+				不断改变ul的top值：
+				index		current_top 		target		speed
+				0			0					-320		-32,-20,-10,-5,-1,-0.4,0
+				1			-320				-640		-10
+				2			-640				-960		-10
+				3			-960				0			+10
+
+				推导公式：top = -index * 320
+
+				* offsetHeight:自边框之内的高度（包含边框）
+				
+				需要添加的效果
+					* 前后按钮
+					* 页码
+			 */
+			let carousel = document.querySelector('.carousel');
+			let ul = carousel.firstElementChild;
+
+			// 图片的数量
+			let length = ul.children.length;
+
+			// 图片的高度
+			let imgHeight = carousel.clientHeight;
+
+			// 初始索引值（默认显示第一张图片）
+			let index = 0;
+
+			let timer;
+
+			let outerTimer = setInterval(autoPlay,3000);
+
+			// 鼠标移入移除
+			carousel.onmouseenter = function(){
+				clearInterval(outerTimer);
+			}
+
+			carousel.onmouseleave = ()=>{
+				outerTimer = setInterval(autoPlay,3000);
+			}
+
+			function autoPlay(){
+				index++;
+
+				if(index>=length){
+					index = 0;
+				}
+
+				// 每张图片滚动到的终点
+				let target = -index*imgHeight;
+
+				clearInterval(timer);
+				timer = setInterval(()=>{
+					// 获取ul当前top值
+					let top = ul.offsetTop;
+
+					// 计算滚动速度（缓冲运动）
+					let speed = (target - top)/10;
+
+					//-0.5=>-1,0.5=>1
+					//目的是不让速度（正负）为0
+					speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
+
+					// 把当前值跟目标值进行对比
+					// 如果当前值等于目标值，则说明图片滚动到终点
+					if(top===target){
+						clearInterval(timer);
+						top = target - speed;
+					}
+
+					ul.style.top = top + speed + 'px';
+				},30)
+			}
+		})
+	</script>
+</head>
+<body>
+	<div class="carousel">
+		<ul>
+			<li><img src="img/001.jpg"></li>
+			<li><img src="img/002.jpg"></li>
+			<li><img src="img/003.jpg"></li>
+			<li><img src="img/004.jpg"></li>
+		</ul>
+	</div>
+</body>
+</html>

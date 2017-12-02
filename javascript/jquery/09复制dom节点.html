@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>09复制dom节点</title>
+    <style>
+        .item{width:200px;}
+        img{display: block;width:200px;}
+        .active{border:2px solid #f00;}
+    </style>
+    <script src="lib/jquery-3.1.1.js"></script>
+    <script>
+        jQuery(function($){
+            $('button').on('click',function(){
+                var $copyImg = $('.item').eq(0).clone();
+
+                // $copyImg.appendTo('body');
+                $copyImg.prependTo('body');
+            });
+
+            $('.item').css('opacity',0.5);
+            $('.item').on('mouseenter',function(){
+                $(this).fadeTo(400,1);
+            }).on('mouseleave',function(){
+                $(this).fadeTo(400,0.5);
+            })
+
+            $('.item img').click(function(){
+                $(this).toggleClass('active');
+            })
+        })
+    </script>
+</head>
+<body>
+    <button>复制</button>
+    <div class="item"><img src="img/g3.jpg"></div>
+    <div class="item"><img src="img/g4.jpg"></div>
+</body>
+</html>

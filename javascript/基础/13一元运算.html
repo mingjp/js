@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13一元运算</title>
+	<script>
+		//返回值：得到一个值
+		var res1 = 10 + 20;//30
+
+		// 自增1：++
+
+		// 后置：++在后面
+		// 	* 变量加1
+		// 	* 返回值为原来的值
+		// 返回值：
+		var num1 = 10;
+		var res2 = num1++;
+		console.log('num1++的值：' + res2);//10
+		console.log('num1变成：' + num1);//11
+
+
+		// 前置：++在前面
+		// * 变量加1
+		// * 返回值为加1后的值
+		var num2 = 10;
+		var res2 = ++num2;
+
+		console.log(num2);//num2的值变成11
+
+		// 返回值：
+		console.log(res2);
+
+
+		var k = 0;
+		//var res = k++ + k;
+				//  0   + 1 => 1
+		//var res = k++ + ++k + k;//4
+		//		    0   + 2   + 2 //=>4
+		// var res = k++ + k++ + k + ++k;//5,6,7
+				  // 0   + 1   + 2 + 3 //=>6
+
+		var res = k++ + k-- - --k + k++;//
+				  0	    1   -  -1 + -1;//1
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

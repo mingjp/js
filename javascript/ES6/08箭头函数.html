@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08箭头函数</title>
+	<style>
+		.box{width:100px;height:100px;background-color: #f00;}
+	</style>
+	<script>
+		/*
+			* 箭头函数的写法
+				* 有几个参数
+				* 有无返回值
+				* 有几行代码
+
+			* 箭头函数中的this
+				* 箭头函数中没有this
+				* 并不是所有的场景都适用于箭头函数
+		 */
+		
+		// 传统赋值式写法
+		var sum = function(a,b){
+			return a+b;
+		}
+
+		// 箭头函数写法
+		// 1.无参数写法
+		var sum2 = ()=>{}
+
+		// 2.有一个参数
+		var sum3 = a=>{}
+
+		// 3.多个参数
+		var sum4 = (a,b)=>{}
+
+		// 4.函数有返回值
+		var sum5 = (a,b)=>a+b;
+
+
+		var show = function(a,b){
+			a++;
+			b++;
+			var res = a + b;
+			return res;
+		}
+
+		// 5.函数中有多行代码
+		var show1 = (a,b)=>{
+			a++;
+			b++;
+			var res = a + b;
+			return res;
+		}
+
+		// 6.返回一个对象
+		var copy = function(){
+			return {name:'xxx',age:18}
+		}
+
+		// ES6中的规则是，紧随箭头的{被解析为块的开始，而不是对象的开始
+		var copy1 = ()=>({name:'xxx',age:18});
+
+
+		// 箭头函数中的this
+		
+
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+	<script>
+		// 箭头函数的应用
+		var box = document.querySelector('.box');
+
+		// 事件中使用
+		box.onmouseover = e=>{
+			console.log(this);
+			box.style.backgroundColor = '#58bc58';
+		}
+
+		// 方法中使用
+		var arr = [10,20,30,40];
+
+		arr.forEach(item=>{
+
+		});
+
+
+
+
+	</script>
+</body>
+</html>

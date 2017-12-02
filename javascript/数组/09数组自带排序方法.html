@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09数组自带排序方法</title>
+	<script>
+		/*
+			数组自带排序方法
+			[10,2,8,55,32,18,9,11,30,16,19,20]
+
+			sort()
+				* 参数：函数
+		 */
+		
+		var arr = [10,2,8,55,32,18,9,11,30,16,19,20];
+		var res = arr.sort(function(a,b){
+			/*
+				如果函数返回正数：说明a>b
+				如果函数返回负数：说明a<b
+				如何函数返回0：	  说明a==b
+			 */
+			// if(a>b){
+			// 	return 1
+			// }eles if(a<b){
+			// 	return -1;
+			// }else{
+			// 	return 0
+			// }
+			return a-b;
+		});
+		console.log(res);
+
+		res.reverse();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12折叠菜单</title>
+	<style>
+		.main-nav ul{background-color: #fc0;overflow:hidden;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			let mainNav = document.querySelector('.main-nav');
+			let navItem = mainNav.children;
+
+			// 遍历绑定事件
+			for(var i=0;i<navItem.length;i++){
+				// 一级菜单链接
+				var link = navItem[i].firstElementChild;
+
+				link.onclick = function(e){
+					// 二级菜单
+					var subNav = this.nextElementSibling;
+
+					var currentHeight = parseFloat(getStyle(subNav,'height'));
+
+					if(currentHeight == 0 ){
+						animate(subNav,{height:169});
+					}else{
+						animate(subNav,{height:0});
+					}
+
+					
+
+					e.preventDefault();
+				}
+			}
+		})
+	</script>
+</head>
+<body>
+	<ul class="main-nav">
+		<li>
+			<a href="#">Girls' Shoes</a>
+			<ul>
+				<li><a href="#">Men's Casual Shoes</a></li>
+				<li><a href="#">Men's Sneakers</a></li>
+				<li><a href="#">Men's Jordan Shoes</a></li>
+				<li><a href="#">Men's Slippers</a></li>
+				<li><a href="#">Men's Running Shoes</a></li>
+				<li><a href="#">Men's Snow Boots</a></li>
+				<li><a href="#">Men's Basketball Shoes</a></li>
+				<li><a href="#">Men's Fashion Shoes</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Men's Shoes</a>
+			<ul>
+				<li><a href="#">Men's Casual Shoes</a></li>
+				<li><a href="#">Men's Sneakers</a></li>
+				<li><a href="#">Men's Jordan Shoes</a></li>
+				<li><a href="#">Men's Slippers</a></li>
+				<li><a href="#">Men's Running Shoes</a></li>
+				<li><a href="#">Men's Snow Boots</a></li>
+				<li><a href="#">Men's Basketball Shoes</a></li>
+				<li><a href="#">Men's Fashion Shoes</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Women's Shoes</a>
+			<ul>
+				<li><a href="#">Men's Casual Shoes</a></li>
+				<li><a href="#">Men's Sneakers</a></li>
+				<li><a href="#">Men's Jordan Shoes</a></li>
+				<li><a href="#">Men's Slippers</a></li>
+				<li><a href="#">Men's Running Shoes</a></li>
+				<li><a href="#">Men's Snow Boots</a></li>
+				<li><a href="#">Men's Basketball Shoes</a></li>
+				<li><a href="#">Men's Fashion Shoes</a></li>
+			</ul>
+		</li>
+	</ul>
+	
+	
+	
+</body>
+</html>

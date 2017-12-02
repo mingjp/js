@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组的操作</title>
+	<script>
+	/*
+		数组的操作
+			* 读取
+				* 索引值：从0开始
+			* 写入
+			* 遍历（循环）
+			
+			* 属性
+				* length 表示数组元素的数量
+	 */
+	var arr = [10,20,30];
+
+	// @读取
+	// 得到第一项
+	arr[0];
+
+	//得到最后一项
+	arr[arr.length-1];
+
+
+	// @写入
+
+	// 把第一个数组元素的值改成100
+	arr[0] = 100;
+	console.log(arr);
+
+	// 添加
+	// 在数组后面添加一个400
+	arr[arr.length] = 400;
+
+
+	// @遍历：for
+	// 获取所有数组元素，并写入页面
+	for(var i=0;i<arr.length;i++){
+		document.write(arr[i] + '<br>');
+	}
+
+	</script>
+</head>
+<body>
+	<h1>数组的操作</h1>
+</body>
+</html>

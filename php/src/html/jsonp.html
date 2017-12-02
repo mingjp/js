@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>跨域解决方案之jsonp</title>
+	
+	<script>
+	document.addEventListener('DOMContentLoaded',function(){
+
+		/*
+			页面访问地址：http://localhost:1705/html/jsonp.html
+			数据请求地址：http://localhost:1000/jsonp.php
+
+			端口不一致：跨域
+			* ajax请求默认不允许跨域
+			
+
+			跨域解决方案
+			接口：http://localhost:1000/js/test.js
+
+			跨域的目的：获取其他服务器的数据
+			* jsonp
+				* 利用script标签能请求跨域数据的原理来获取其他服务器的数据
+				* jsonp请求不是ajax请求
+		 */
+		// var xhr = new XMLHttpRequest();
+		// xhr.open('get','http://localhost:1000/jsonp.php',true);
+		// xhr.send();
+
+		window.myData = function(data){
+			// data = JSON.parse(data);
+			console.log(data);
+		}
+
+		// 创建一个script标签
+		var script = document.createElement('script');
+		script.src = 'http://localhost:1000/jsonp.php?callback=myData';//myData({})
+
+		// 把生成的script标签写入页面
+		document.head.appendChild(script);
+	})
+
+
+	</script>
+	<!-- <script src="http://localhost:1000/js/test.js"></script> -->
+</head>
+<body>
+	
+</body>
+</html>

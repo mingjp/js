@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自由落体效果</title>
+	<style>
+		body{background-color: #000;overflow:hidden;}
+		.basketball{position:absolute;top:0;left:50%;margin-left:-25px;width:50px;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			/*
+				加速运动：
+					速度不断增加的运动
+			 */
+			var basketball = document.querySelector('.basketball');
+
+			var speed = 0;
+			var timer = setInterval(()=>{
+				// 获取当前top值
+				let top = basketball.offsetTop;
+
+				speed += 3;
+
+				// let top = basketball.getAttribute('top');//获取html的属性值
+				// let top = getComputedStyle(basketball).top;//获取css样式
+
+				if(top >= window.innerHeight-basketball.offsetHeight){
+					clearInterval(timer);
+					top = window.innerHeight-basketball.offsetHeight - speed;
+				}
+
+				basketball.style.top = top + speed + 'px';
+
+
+			},30);
+		});
+	</script>
+</head>
+<body>
+	<img src="img/basketball.jpg" class="basketball">
+</body>
+</html>

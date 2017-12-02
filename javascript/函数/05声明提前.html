@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05声明提前</title>
+	<script>
+		/*
+			三大流程控制
+				* 顺序执行（重点）
+				* 选择执行
+				* 循环执行
+
+			声明提前
+				* 浏览器在逐行执行代码之前，会预存（变量声明）和（函数声明）
+		 */
+
+		// 声明但没赋值：得到undefined
+		// 不是函数：sum is not a function
+
+
+		var a = 10;
+		console.log(b);//undefined
+		console.log(a);//10
+		show();//show
+		sum();//sum is not a function
+		var sum = function(){console.log('sum');};
+		var b = 100;
+		function show(){console.log('show')};
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

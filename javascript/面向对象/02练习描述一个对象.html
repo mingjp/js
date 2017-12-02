@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02练习描述一个对象</title>
+	<script>
+		/*
+			面向对象
+				* 创建并描述对象（重点）
+					* 对象有什么（属性）
+					* 对象能做什么（方法）
+				* 操作对象
+		 */
+		
+		// 描述一个人
+		var lemon = {
+			// 属性
+			name:'lemon',
+			gender:'女',
+			age:28,
+			high:160,
+
+			// 方法
+			chihuo:function(){},
+			drive:function(){},
+			drink:function(){}
+		}
+
+		// 操作对象
+		lemon.drink();//喝酒
+		lemon.drive();//开车
+
+
+
+		/*
+			购物车
+		 */
+
+		 var shoppingCar = {
+		 	goods:[{
+		 		name:'Gucci Dressage Original GG Canvas Tote Bag  ',
+		 		imgurl:'img/xxx.jpg'
+		 		id:296850,
+		 		color:'Coffee',
+		 		size:10,
+		 		price:189.93,
+		 		salePrice:120.69,
+		 		qty:1
+		 	},{},{}],
+		 	total: 4111.10,
+		 	step:'',
+
+		 	// 方法
+		 	init:function(){},
+		 	remove:function(id){},
+		 	changeQty:function(id){},
+		 	checkout:function(){},
+		 	clear:function(){}
+
+		 }
+
+		 shoppingCar.init();
+
+
+		 /*
+		 	QQ聊天窗口
+		  */
+		 var qqChat = {
+		 	
+		 }
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

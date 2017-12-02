@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11九九乘法表</title>
+	<style>
+		span{display:inline-block;margin:5px;padding:0 5px;width:65px;height:30px;line-height:30px;background-color:#efefef;}
+		span:hover{background-color: #fc0;}
+	</style>
+	<script>
+		/*
+			九九乘法表
+		 */
+		
+		// 外层循环控制行数
+		for(var i=1;i<=9;i++){
+
+			// 内层循环控制列数
+			for(var j=1;j<=i;j++){
+				document.write('<span>' + j + '&times;' + i + '=' + i*j + '</span>');
+			}
+			document.write('<br>');
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

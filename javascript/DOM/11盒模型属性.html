@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11盒模型属性</title>
+	<style>
+		#box{padding:20px;background-color: #c00;position:relative;}
+		.content{padding:20px;border:1px solid #ddd;}
+	</style>
+	<script>
+		window.onload = function(){
+			var box = document.getElementById('box');
+			var content = box.children[0];
+
+			console.log(content.offsetTop);
+
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<div class="content"></div>
+	</div>
+</body>
+</html>

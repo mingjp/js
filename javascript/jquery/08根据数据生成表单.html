@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>根据数据生成表单</title>
+    <script src="lib/jquery-3.1.1.js"></script>
+	<script>
+        jQuery(function($){
+    		/*
+    			根据数据生成表单
+    			目的：根据数据生成html结构
+    				1）生成select下拉框 ==> <label for="">xx</label><select id name><option></option></select>
+    				2）生成多行文本框   ==> <label>xx</label><textarea></textarea>
+    				3）checkbox/radio ==> <labe>xx</labe> <span><label><input type="checkbox">篮球</label></span>
+    				4）其他情况 ==> <label>xxx</label> <input type="text">
+    		 */
+    		
+    		var arr = [{
+                label: "用户名",
+                name: "username",
+                type: "text"
+            }, {
+                label: "密码",
+                name: "password",
+                type: "password"
+            }, {
+                label: "性别",
+                name: "gender",
+                type: "select",
+                value: ['男', '女', '不男', '不女', 'Gay', '妖王']
+            }, {
+                label: "爱好",
+                name: "hobby",
+                type: "checkbox",
+                value: ['篮球', '足球', '羽毛球', '兵乓球', '爬山', '购物', '旅游', '看美女']
+            }, {
+                label: '是否已婚',
+                name: 'married',
+                type: 'radio',
+                value: ['已婚', '未婚']
+            },
+            {
+                label: '简介',
+                name: 'resume',
+                type: 'textarea'
+            }];
+
+            //<label for="hobby">爱好</label> <span><label><input type="checkbox" value="篮球">篮球</label><label><input type="checkbox" value="足球">足球</label>......</span>
+
+
+            // 生成form表单
+            var $form = $('<form/>');
+
+
+            $.each(arr,function(idx,item){
+                var $p = $('<p/>');
+                var $label = $('<label/>').html(item.label + ': ');
+
+                // label标签
+                // 添加html属性
+                $label.attr('for',item.name);
+
+                // 表单元素
+                var $input;
+
+                switch(item.type){
+                    case 'select':
+                        $input = $('<select/>');
+                        $input.attr({id:item.name,name:item.name});
+
+                        var html = item.value.map(function(opt){
+                            return `<option value="${opt}">${opt}</option>`
+                        }).join('');
+
+                        $input.html(html);
+                        break;
+                    case 'textarea':
+                        $input = $('<textarea/>');
+                        $input.attr({id:item.name,name:item.name});
+                        break;
+                    case 'radio':
+                    case 'checkbox':
+                        $input = $('<span/>');
+                        $.each(item.value,function(idx,val){
+                            // <label><input type="checkbox" value="篮球">篮球</label>
+                            var $label = $('<label/>').html(val);
+                            var $item = $('<input/>').attr({type:item.type,value:val,name:item.name});
+
+                            // input插入label
+                            $label.prepend($item);
+
+                            // 把label写入span
+                            $input.append($label);
+                        });
+                        break;
+                    default:
+                        $input = $('<input/>');
+                        $input.attr({id:item.name,name:item.name,type:item.type});
+                }
+
+                // 把$input,$label写入$p
+                $p.append([$label,$input]);
+
+                $form.append($p);
+            });
+
+            // append,prepend：容器中添加元素
+            // $('body').append($form);
+
+            // 把元素添加到容器中
+            $form.appendTo('body');
+
+        })
+	</script>
+</head>
+<body>
+	<!-- <form>
+        <p>
+            <label for="username">用户名</label>
+            <input type="text" name="username" id="username">
+        </p>
+        <p>
+            <label for="password">密码</label>
+            <input type="password" name="password" id="password">
+        </p>   
+    </form> -->
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>16封装生成随机颜色函数</title>
+	<script>
+		/*
+			onload事件
+				* 内容加载完成后执行
+			window.onload:
+				* 页面所有内容（包括图片、文件）加载完成触发
+		 */
+		window.onload = function(){
+			/*
+				rgb(255,0,0)
+				返回值：运算后得到的值
+					
+					var num =10;
+					num++ //返回值为：10
+
+					10+20;//返回值：30
+
+					randomColor();//返回值：
+
+				* return 
+					* 终止函数的执行,return后的代码不会执行
+					* return后如果有值，则把这个值返回到函数执行的地方
+			 */
+
+			var btn = document.getElementById('btn');
+
+			
+			// 绑定事件
+			btn.onclick = function(){
+				// 生成一个随机颜色
+
+				var color = randomColor();
+
+				console.log(color);
+
+				// 获取body元素
+				document.body.style.backgroundColor = color;
+			}
+
+
+			// 生成随机颜色函数
+			function randomColor(){
+				var r = parseInt(Math.random()*256);
+				var g = parseInt(Math.random()*256);
+				var b = parseInt(Math.random()*256);
+
+				var color = 'rgb(' + r + ',' + g + ',' + b + ')';
+
+				// 函数返回值
+				return color;
+			}
+
+			//randomColor();//得到一个rgb(232,0,33);
+		}
+		
+	</script>
+</head>
+<body>
+	<button id="btn">随机背景色</button>
+</body>
+</html>

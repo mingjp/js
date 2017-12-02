@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装一个函数afterDate(date,n)，得到日期date的n天后的日期</title>
+	<script>
+		function afterDate(date,n){
+			/*
+				1）把date转换成日期对象
+				2）先获取当前日期
+					getDate();//18
+				2）设置当前时间n天后的日期
+					setDate()
+			 */
+			
+			var d = new Date(date);
+
+			// 获取日期对应的号数（几号）
+			var current = d.getDate();
+
+			// 设置当前时间n天后的日期
+			d.setDate(current + n);
+
+			var year = d.getFullYear();
+			var month = d.getMonth()+1;
+			var date = d.getDate();
+
+			return year + '-' + month + '-' + date;
+		}
+		// afterDate('2017-8-18',10);//2017-8-28
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

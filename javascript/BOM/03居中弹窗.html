@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03居中弹窗</title>
+	<style>
+		.popover{position:absolute;width:480px;border:1px solid #ddd;padding:1px;}
+		.popover h4{margin:0;padding:10px;border-bottom:1px solid #ddd;}
+		.content{padding:15px;min-height:100px;}
+		.popover .btnClose{position: absolute;top:5px;right:10px;padding:5px;}
+		.popover .btnClose:hover{background-color:#f00;color:#fff;}
+	</style>
+	<script>
+		/*
+			window
+				* innerWidth 窗口可视区域的宽
+				* innerHeight 窗口可视区域的高
+			
+			* 元素的宽高(自边框之内的宽高)
+				* offsetWidth
+				* offsetHeight
+		 */
+		window.onload = function(){
+			var popover = document.getElementById('popover');
+			var btnClose = document.getElementById('btnClose');
+
+			// 居中
+			popover.style.left = (window.innerWidth - popover.offsetWidth)/2 + 'px';
+			popover.style.top = (window.innerHeight - popover.offsetHeight)/2 + 'px';
+
+			//窗口大小改变时触发
+			window.onresize = function(){
+				popover.style.left = (window.innerWidth - popover.offsetWidth)/2 + 'px';
+				popover.style.top = (window.innerHeight - popover.offsetHeight)/2 + 'px';
+			}
+
+
+			// 关闭弹窗
+			btnClose.onclick = function(){
+				popover.style.display = 'none';
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="popover" id="popover">
+		<h4>弹窗标题</h4>
+		<div class="content">
+			弹窗内容
+		</div>
+		<span class="btnClose" id="btnClose">&times;</span>
+	</div>
+</body>
+</html>

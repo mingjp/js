@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13无缝滚动</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		.carousel{position:relative;border:5px solid #ddd;width:224px;height:288px;overflow: hidden;}
+		.carousel ul{position:absolute;top:0;left:0;overflow: hidden;}
+		.carousel li{float:left;}
+		.carousel img{display: block;}
+		.carousel .page{position: absolute;left:50%;bottom:10px;transform: translate(-50%,0);}
+		.carousel .page span{display:inline-block;margin:0 3px;width:6px;height:6px;overflow: hidden;background-color: #ddd;border-radius: 50%;text-indent:-1000px;box-shadow: 0 0 5px rgba(0,0,0,.5)}
+		.carousel .page span.active{background-color: #fc0;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			function Carousel(opt){
+				// 定义属性
+
+				// 容器
+				this.ele = opt.ele || '.carousel';
+
+				// 图片
+				this.imgs = opt.imgs;
+
+				// 索引值
+				this.index = 0;
+
+				// 滚动方向top,left
+				this.direction = opt.direction || 'top';
+
+				//动画速度
+				this.speed = -10;
+
+				// 是否显示页码（待解决）
+				this.page = opt.page || true;
+
+				// 图片切换间隔
+				this.duration = opt.duration || 3000;
+
+				// 无缝滚动（待解决）
+				this.seamless = opt.seamless || true;
+			}
+
+			// 定义方法
+			Carousel.prototype = {
+				// 重新设置constructor
+				constructor:Carousel,
+
+				// 初始化
+				// * 生成html结构
+				// * 绑定事件
+				init:function(){console.log(666)
+					//.carousel
+					this.ele = document.querySelector(this.ele);
+
+					// 生成html结构
+					var ul = document.createElement('ul');
+					ul.innerHTML = this.imgs.map(item=>{
+						return `<li><img src="${item}"></li>`;
+					}).join('');
+					this.ele.appendChild(ul);
+
+					// 水平方向移动，必须设置容器ul的宽度
+					if(this.direction === 'left'){
+						ul.style.width = this.ele.clientWidth*this.imgs.length + 'px';
+					}
+
+					// 鼠标移入移除
+					this.ele.onmouseenter = ()=>{
+						this.stop();
+					}
+					this.ele.onmouseleave = ()=>{
+						this.start();
+					}
+
+
+					// 在方法后面返回this
+					// 用于链式调用
+					return this;
+
+				},
+				move:function(){
+					this._createTimer();
+					return this;
+				},
+				stop:function(){
+					clearInterval(this.timer);
+					return this;
+				},
+				start:function(){
+					this._createTimer();
+					return this;
+				},
+
+				// 约定：在属性/方法前添加下划线
+				// 表示私有属性
+				_createTimer:function(){
+					var ul = this.ele.querySelector('ul');
+					this.timer = setInterval(()=>{
+						this.index++;
+
+						if(this.index>this.imgs.length-1){
+							this.index = 0;
+						}
+
+						var attr = {};
+						if(this.direction === 'top'){
+							attr.top =  -this.ele.clientHeight * this.index;
+						}else{
+							attr.left = -this.ele.clientWidth * this.index;
+						}
+
+						animate(ul,attr);
+					},this.duration);
+				}
+			}
+
+			// var c = new Carousel();
+			// c.init();
+			// c.move();
+			
+			// 链式调用
+			new Carousel({
+				// ele:'.box',
+				direction:'left',
+				imgs:['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg','img/6.jpg','img/7.jpg','img/8.jpg','img/9.jpg']
+			}).init().move().stop();
+		});
+	</script>
+</head>
+<body>
+	<div class="carousel">
+		<!-- <ul>
+			<li><img src="img/1.jpg" alt=""></li>
+			<li><img src="img/2.jpg" alt=""></li>
+			<li><img src="img/3.jpg" alt=""></li>
+			<li><img src="img/4.jpg" alt=""></li>
+			<li><img src="img/5.jpg" alt=""></li>
+			<li><img src="img/6.jpg" alt=""></li>
+			<li><img src="img/7.jpg" alt=""></li>
+			<li><img src="img/8.jpg" alt=""></li>
+			<li><img src="img/9.jpg" alt=""></li>
+		</ul> -->
+	</div>
+</body>
+</html>

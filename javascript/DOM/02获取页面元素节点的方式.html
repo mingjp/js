@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02获取页面元素节点的方式</title>
+	<!-- <style>
+		h1{color:#f60;}
+	</style> -->
+	<script>
+	window.onload = function(){
+		/*
+			* 通过id名
+			document.getElementById()
+
+			* 通过标签名获取元素节点
+			getElementsByTagName(): 得到一个数组（类数组）
+
+			* 通过类名获取元素
+			getElementsByClassName(): 得到一个数组（类数组）
+
+			* 通过name属性获取元素（一般用于表单元素）
+			document.getElementsByName()
+		 */
+		
+
+		var h1 = document.getElementsByTagName('h1');
+		console.log(h1);
+
+		var li = document.getElementsByTagName('li');
+		console.log(li);
+		
+		// 获取元素节点
+		var datalist = document.getElementsByClassName('datalist')[0];
+		console.log(datalist)
+
+
+		var datalist_li = datalist.getElementsByTagName('li');
+		console.log(datalist_li);
+
+
+		//先获取h1元素
+		var h1 = document.getElementsByTagName('h1')[0];
+		h1.style.color = '#f00';
+		h1.innerHTML = 'abc';
+
+	}
+	</script>
+</head>
+<body>
+	<h1>获取页面元素节点的方式</h1>
+	<ul class="datalist">
+		<li>数据1</li>
+		<li>数据2</li>
+		<li>数据3</li>
+	</ul>
+	<ol>
+		<li>数据1</li>
+		<li>数据2</li>
+		<li>数据3</li>
+	</ol>
+</body>
+</html>

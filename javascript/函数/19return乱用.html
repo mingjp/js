@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>19return乱用</title>
+	<script>
+		function show(){
+			var num = 10;
+			// if(num>5){
+			// 	break;
+			// }
+
+			for(var i=0;i<num;i++){
+				console.log(i);
+				if(i>5){
+					return i;
+				}
+			}
+		}
+
+		// show();
+
+		var num = 10;
+
+		// if(num>5){
+		// 	return;
+		// }
+
+		// if(num>5){
+		// 	break;
+		// }
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

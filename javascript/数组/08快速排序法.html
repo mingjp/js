@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择排序法</title>
+	<style>
+		p{margin:5px 0;color:#999;}
+		.complete{margin-bottom:20px;color:#f60;}
+	</style>
+	<script>
+		/*
+			选择排序法
+			把当前数字分别跟后面的数字进行对比，把最小的放前面
+			[10,2,8,55,32,18,9,11,30,16,19,20]
+		 */
+		
+		var arr = [10,2,8,55,18,32,9];//[10,2,8,18,32,9] 55 []
+
+		function fastSort(arr){
+			// 递归退出条件
+			if(arr.length<=1){
+				return arr;
+			}
+
+			var centerIdx = parseInt(arr.length/2);
+			var center = arr[centerIdx];//8
+
+			// 保存比中间的数小的值
+			var left = [];
+
+			// 保存比中间数大的值
+			var right = [];//[10,9]
+
+			// 跟当前值相同的数
+			var eq = [];
+
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]<center){
+					left.push(arr[i]);
+				}else if(arr[i]>center){
+					right.push(arr[i]);
+				}else{
+					eq.push(arr[i]);
+				}
+			}
+
+			return fastSort(left).concat(eq,fastSort(right));
+		}
+		console.log(arr);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

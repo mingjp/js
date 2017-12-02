@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05加减乘除运算</title>
+
+</head>
+<body>
+	<input type="text" id="num1">
+	<input type="text" id="num2">
+	<button onclick="add()">+</button>
+	<button onclick="sub()">-</button>
+	<button onclick="mul()">*</button>
+	<button onclick="div()">/</button>
+	<button onclick="mod()">%</button>
+
+	<script>
+		/*
+			如何获取html中输入框的值？
+				* 先获取输入框这个标签
+					* document.getElementById(id名)
+				* 通过标签的value属性获取输入的值
+					* num1.value 
+			如何实现点击按钮计算功能？
+				* 声明函数
+				* 函数执行：button的onclick属性
+
+
+			* 变量声明
+				* var 变量名
+			* 函数声明
+				* function 函数名(){}
+			* 字符串拼接
+				* 加号两边任意一个操作数为字符串是，就是拼接 
+			* 判断数据类型
+				* typeof()
+
+
+			():圆括号
+			{}:花括号
+			[]:方括号
+			<>:尖括号
+		 */
+
+		 // 先获取输入框这个标签
+		 var num1 = document.getElementById('num1');
+		 var num2 = document.getElementById('num2');
+		 
+
+		 // 函数声明
+		 function add(){
+		 	//这里可以写多行js代码
+		 	
+		 	// 通过标签的value属性获取输入的值（得到一个String）
+		 	// num1的vaule属性:num1.value
+		 	// 把字符串String转换成数字Number
+		 	var n1 = Number(num1.value);//'20' 
+		 	var n2 = Number(num2.value);//'10'
+
+
+		 	// var type = typeof(n1)
+
+		 	alert(n1 + n2);//'2010'
+
+		 }
+
+		 // 执行函数
+		 // 格式：函数名()
+		 // add();
+
+
+		 // 减法
+		 function sub(){
+		 	var n1 = Number(num1.value);
+		 	var n2 = Number(num2.value);
+
+		 	alert(n1-n2);
+		 }
+
+		 // 乘
+		 function mul(){
+		 	var n1 = num1.value;
+		 	var n2 = num2.value;
+
+		 	alert(n1*n2);
+		 }
+
+		 // 除
+		 function div(){
+		 	var n1 = num1.value;
+		 	var n2 = num2.value;
+
+		 	alert(n1/n2);
+		 }
+
+
+		 // 取余
+		 function mod(){
+		 	var n1 = num1.value;
+		 	var n2 = num2.value;
+
+		 	alert(n1%n2);
+		 }
+
+	</script>
+</body>
+</html>

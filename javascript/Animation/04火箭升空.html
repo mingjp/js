@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04火箭升空</title>
+	<style>
+		body{background-color: #16283b;overflow:hidden;}
+		.rocket{width:60px;position: absolute;top:80%;left:50%;}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',()=>{
+			/*
+				火箭升空
+					* 先加速
+					* 后减速
+			 */
+			let rocket = document.querySelector('.rocket');
+
+			let speed = 0;
+
+			let timer = setInterval(()=>{
+				let top = rocket.offsetTop;
+
+				// 加速阶段
+				if(top > window.innerHeight/2){
+					speed--;
+				}
+
+				// 减速阶段
+				else{
+					speed++
+
+				}
+
+
+				// 当速度等于0时，说明火箭已经到达轨道
+				// 清除定时器
+				if(speed==0){
+					clearInterval(timer);
+				}
+
+				rocket.style.top = top + speed + 'px';
+
+			},50);
+
+			
+		})
+	</script>
+</head>
+<body>
+	<img src="img/rocket.gif" class="rocket">
+</body>
+</html>

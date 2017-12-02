@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13封装一个函数计算所有传入参数的和</title>
+	<script>
+	/*
+		封装一个函数计算所有传入参数的和
+		arguments
+			函数内部隐藏的对象（是一个类数组），保存着实参的信息
+			* length: 实参的数量
+			* 取值：利用（索引值）
+				* 格式：arguments[索引值] 
+				* 索引值是从0开始
+	 */
+		function sum(){
+			//arguments
+			// console.log(arguments.length);
+
+			// 
+
+			// 循环arguments,分别取出每个数字，然后相加
+			// arguments[0]
+
+			var total = 0;
+			for(var i=0;i<arguments.length;i++){
+				total += arguments[i];
+			}
+
+			console.log(total);
+
+		}
+		sum(1,2);//3
+		sum(10,2,44);//56
+		sum(10,2,44,2,7,3,444,7,5,5,6,6,6,67,67);//681
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

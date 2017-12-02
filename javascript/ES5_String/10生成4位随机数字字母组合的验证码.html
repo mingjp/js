@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>生成4位随机数字字母组合的验证码</title>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			var vcode = document.getElementById('vcode');
+			var show = document.getElementById('show');
+			var btn = document.getElementById('btn');
+
+			var code = yanzhengma();
+			show.innerHTML = code.toUpperCase();
+
+			btn.onclick = function(){
+				// 获取输入的验证码，判读跟随机验证码是否一致
+				var _vcode = vcode.value;
+
+				if(_vcode.toLowerCase() === show.innerHTML.toLowerCase()){
+					document.write('恭喜你，在这一天里...');
+				}else{
+					var code = yanzhengma();
+					show.innerHTML = code.toUpperCase();
+					vcode.value = ''
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="vcode"><span id="show"></span>
+	<button id="btn">提交</button>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09匿名函数</title>
+	<script>
+	/*
+		匿名函数的执行
+			* (function(){})()
+		
+		匿名函数传参
+	 */
+		(function(num){
+			console.log(666);
+			console.log(num)
+		})(100);
+
+		(function(){
+			console.log(777)
+		}());
+
+		!function(){
+			console.log(888)
+		}();
+
+		-function(){
+			console.log(999)
+		}();
+
+
+	</script>
+</head>
+<body>
+	<button>按钮1</button>
+	<button>按钮2</button>
+	<button>按钮3</button>
+	<button>按钮4</button>
+	<button>按钮5</button>
+
+	<script>
+	(function(){
+		var btns = document.querySelectorAll('button');
+
+		/*for(let i=0;i<btns.length;i++){
+			btns[i].onclick = ()=>{
+				console.log(i);
+			}
+		}*/
+
+		/*for(var i=0;i<btns.length;i++){
+			btns[i].idx = i;
+			btns[i].onclick = function(){
+				console.log(this.idx);
+			}
+		}*/
+
+		for(var i=0;i<btns.length;i++){
+			(function(i){
+				btns[i].onclick = function(){
+					console.log(i);
+				}
+			})(i);
+		}
+	})();
+		
+	</script>
+</body>
+</html>

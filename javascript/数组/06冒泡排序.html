@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06冒泡排序</title>
+	<style>
+		p{margin:5px 0;color:#999;}
+		.complete{margin-bottom:20px;color:#f60;}
+	</style>
+	<script>
+		/*
+			冒泡排序
+			两两进行判断，把最大的值移动到最后
+			[10,2,8,55,32,18,9,11,30,16,19,20]
+		 */
+		
+		var arr = [10,2,8,55,18,32,9];
+
+		document.write('<h4>' + arr.join() + '</h4>');
+
+		// 外层循环：执行多次内循环
+		for(var j=0;j<arr.length-1;j++){
+
+			// 内层循环：把最大值移动到最后
+			for(var i=0;i<arr.length-j-1;i++){
+				if(arr[i] > arr[i+1]){
+					// 如果当前数字比后面的数字大
+					// 则交换位置
+					var temp = arr[i];//10
+
+					arr[i] = arr[i+1];//2
+					arr[i+1] = temp
+				}
+				document.write('<p>' + arr.join() + '</p>');
+			}
+			document.write('<p class="complete">内循环'+(j+1)+'次：'+ arr.join() + '</p>');
+		}
+		console.log(arr);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
